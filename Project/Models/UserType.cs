@@ -23,6 +23,8 @@ namespace Project.Models
         public int UserTypeID { get; set; }
         public string Description { get; set; }
     
+        public virtual Admin Admin { get; set; }
+        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
     }

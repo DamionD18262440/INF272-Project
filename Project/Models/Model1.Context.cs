@@ -13,10 +13,10 @@ namespace Project.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class INF272ProjectEntities : DbContext
+    public partial class INF272ProjectEntities1 : DbContext
     {
-        public INF272ProjectEntities()
-            : base("name=INF272ProjectEntities")
+        public INF272ProjectEntities1()
+            : base("name=INF272ProjectEntities1")
         {
         }
     
@@ -38,6 +38,7 @@ namespace Project.Models
         public virtual DbSet<Investment_Type> Investment_Types { get; set; }
         public virtual DbSet<Investments_Made> Investments_Mades { get; set; }
         public virtual DbSet<Spending_Transaction> Spending_Transactions { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
     }
