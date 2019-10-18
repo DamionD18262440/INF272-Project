@@ -1,0 +1,34 @@
+﻿section{
+    text-align:center;
+}
+label {
+    display: inline-block;
+    width: 120px;
+    text-align: left;
+    padding:10px;
+    font-size:large;
+}
+h2{
+    text-align:center;
+}
+section{
+    border:solid thin black;
+    width:70%;
+    text-align:center;
+    padding:10px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+}
+#Calculatebtn{
+    text-align:left;
+}
+#Register{
+    border:solid thin black;
+    width:70%;
+    text-align:center;
+    padding:10px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+}

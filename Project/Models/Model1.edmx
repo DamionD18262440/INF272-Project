@@ -1,0 +1,1122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="INF272ProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminName" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="AdminSurname" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="AdminEmailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Budget Limit">
+          <Key>
+            <PropertyRef Name="LimitID" />
+          </Key>
+          <Property Name="LimitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LimitAmount" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="LimitTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Budget Limit Type">
+          <Key>
+            <PropertyRef Name="LimitTypeID" />
+          </Key>
+          <Property Name="LimitTypeID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Compound Interest">
+          <Key>
+            <PropertyRef Name="CompoundInterestID" />
+          </Key>
+          <Property Name="CompoundInterestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Annually" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="SemiAnnually" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Quarterly" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Monthly" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerSurname" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="NetWorthID" Type="int" Nullable="false" />
+          <Property Name="IncomeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer Networth">
+          <Key>
+            <PropertyRef Name="NetworthID" />
+          </Key>
+          <Property Name="NetworthID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NetworthAmount" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="TransID" Type="int" Nullable="false" />
+          <Property Name="IncomeID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fixed Interest">
+          <Key>
+            <PropertyRef Name="FixedInterestID" />
+          </Key>
+          <Property Name="FixedInterestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Annually" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="SemiAnnually" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Quarterly" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Monthly" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Income">
+          <Key>
+            <PropertyRef Name="IncomeID" />
+          </Key>
+          <Property Name="IncomeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncomeAmount" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="IncomeTypeID" Type="int" Nullable="false" />
+          <Property Name="IncomeDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Income Type">
+          <Key>
+            <PropertyRef Name="IncomeTypeID" />
+          </Key>
+          <Property Name="IncomeTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Interest Type">
+          <Key>
+            <PropertyRef Name="InterestTypeID" />
+          </Key>
+          <Property Name="InterestTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompoundInterestID" Type="int" Nullable="false" />
+          <Property Name="FixedInterestID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Investment Type">
+          <Key>
+            <PropertyRef Name="InvestTypeID" />
+          </Key>
+          <Property Name="InvestTypeID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Investments Made">
+          <Key>
+            <PropertyRef Name="InvestID" />
+          </Key>
+          <Property Name="InvestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvestAmount" Type="int" Nullable="false" />
+          <Property Name="InterestRate" Type="float" Nullable="false" />
+          <Property Name="NumOfYears" Type="float" Nullable="false" />
+          <Property Name="InterestTypeID" Type="int" Nullable="false" />
+          <Property Name="InvestTypeID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Spending Transactions">
+          <Key>
+            <PropertyRef Name="TransID" />
+          </Key>
+          <Property Name="TransID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransAmount" Type="int" Nullable="false" />
+          <Property Name="TransDate" Type="date" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserTypeID" Type="int" Nullable="false" />
+          <Property Name="AdminID" Type="int" Nullable="false" />
+          <Property Name="GUID" Type="int" Nullable="false" />
+          <Property Name="GUIDExpirey" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Budget Limit_Budget Limit Type">
+          <End Role="Budget Limit Type" Type="Self.Budget Limit Type" Multiplicity="1" />
+          <End Role="Budget Limit" Type="Self.Budget Limit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budget Limit Type">
+              <PropertyRef Name="LimitTypeID" />
+            </Principal>
+            <Dependent Role="Budget Limit">
+              <PropertyRef Name="LimitTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Budget Limit_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Budget Limit" Type="Self.Budget Limit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Budget Limit">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer Networth_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Customer Networth" Type="Self.Customer Networth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Customer Networth">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer Networth_Income">
+          <End Role="Income" Type="Self.Income" Multiplicity="1" />
+          <End Role="Customer Networth" Type="Self.Customer Networth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Income">
+              <PropertyRef Name="IncomeID" />
+            </Principal>
+            <Dependent Role="Customer Networth">
+              <PropertyRef Name="IncomeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer Networth_Spending Transactions">
+          <End Role="Spending Transactions" Type="Self.Spending Transactions" Multiplicity="1" />
+          <End Role="Customer Networth" Type="Self.Customer Networth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spending Transactions">
+              <PropertyRef Name="TransID" />
+            </Principal>
+            <Dependent Role="Customer Networth">
+              <PropertyRef Name="TransID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Income">
+          <End Role="Income" Type="Self.Income" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Income">
+              <PropertyRef Name="IncomeID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="IncomeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Income_Income Type">
+          <End Role="Income Type" Type="Self.Income Type" Multiplicity="1" />
+          <End Role="Income" Type="Self.Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Income Type">
+              <PropertyRef Name="IncomeTypeID" />
+            </Principal>
+            <Dependent Role="Income">
+              <PropertyRef Name="IncomeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Interest Type_Compound Interest">
+          <End Role="Compound Interest" Type="Self.Compound Interest" Multiplicity="1" />
+          <End Role="Interest Type" Type="Self.Interest Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compound Interest">
+              <PropertyRef Name="CompoundInterestID" />
+            </Principal>
+            <Dependent Role="Interest Type">
+              <PropertyRef Name="CompoundInterestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Interest Type_Fixed Interest">
+          <End Role="Fixed Interest" Type="Self.Fixed Interest" Multiplicity="1" />
+          <End Role="Interest Type" Type="Self.Interest Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fixed Interest">
+              <PropertyRef Name="FixedInterestID" />
+            </Principal>
+            <Dependent Role="Interest Type">
+              <PropertyRef Name="FixedInterestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investments Made_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Investments Made" Type="Self.Investments Made" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Investments Made">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investments Made_Interest Type">
+          <End Role="Interest Type" Type="Self.Interest Type" Multiplicity="1" />
+          <End Role="Investments Made" Type="Self.Investments Made" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Interest Type">
+              <PropertyRef Name="InterestTypeID" />
+            </Principal>
+            <Dependent Role="Investments Made">
+              <PropertyRef Name="InterestTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investments Made_Investment Type">
+          <End Role="Investment Type" Type="Self.Investment Type" Multiplicity="1" />
+          <End Role="Investments Made" Type="Self.Investments Made" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investment Type">
+              <PropertyRef Name="InvestTypeID" />
+            </Principal>
+            <Dependent Role="Investments Made">
+              <PropertyRef Name="InvestTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Spending Transactions_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Spending Transactions" Type="Self.Spending Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Spending Transactions">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="AdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserType">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserType_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserType_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="INF272ProjectModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Budget Limit" EntityType="Self.Budget Limit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Budget Limit Type" EntityType="Self.Budget Limit Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Compound Interest" EntityType="Self.Compound Interest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer Networth" EntityType="Self.Customer Networth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fixed Interest" EntityType="Self.Fixed Interest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Income Type" EntityType="Self.Income Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Interest Type" EntityType="Self.Interest Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Investment Type" EntityType="Self.Investment Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Investments Made" EntityType="Self.Investments Made" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Spending Transactions" EntityType="Self.Spending Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Budget Limit_Budget Limit Type" Association="Self.FK_Budget Limit_Budget Limit Type">
+            <End Role="Budget Limit Type" EntitySet="Budget Limit Type" />
+            <End Role="Budget Limit" EntitySet="Budget Limit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Budget Limit_Customer" Association="Self.FK_Budget Limit_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Budget Limit" EntitySet="Budget Limit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer Networth_Customer" Association="Self.FK_Customer Networth_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Customer Networth" EntitySet="Customer Networth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer Networth_Income" Association="Self.FK_Customer Networth_Income">
+            <End Role="Income" EntitySet="Income" />
+            <End Role="Customer Networth" EntitySet="Customer Networth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer Networth_Spending Transactions" Association="Self.FK_Customer Networth_Spending Transactions">
+            <End Role="Spending Transactions" EntitySet="Spending Transactions" />
+            <End Role="Customer Networth" EntitySet="Customer Networth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Income" Association="Self.FK_Customer_Income">
+            <End Role="Income" EntitySet="Income" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Income_Income Type" Association="Self.FK_Income_Income Type">
+            <End Role="Income Type" EntitySet="Income Type" />
+            <End Role="Income" EntitySet="Income" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Interest Type_Compound Interest" Association="Self.FK_Interest Type_Compound Interest">
+            <End Role="Compound Interest" EntitySet="Compound Interest" />
+            <End Role="Interest Type" EntitySet="Interest Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Interest Type_Fixed Interest" Association="Self.FK_Interest Type_Fixed Interest">
+            <End Role="Fixed Interest" EntitySet="Fixed Interest" />
+            <End Role="Interest Type" EntitySet="Interest Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investments Made_Customer" Association="Self.FK_Investments Made_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Investments Made" EntitySet="Investments Made" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investments Made_Interest Type" Association="Self.FK_Investments Made_Interest Type">
+            <End Role="Interest Type" EntitySet="Interest Type" />
+            <End Role="Investments Made" EntitySet="Investments Made" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investments Made_Investment Type" Association="Self.FK_Investments Made_Investment Type">
+            <End Role="Investment Type" EntitySet="Investment Type" />
+            <End Role="Investments Made" EntitySet="Investments Made" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Spending Transactions_Customer" Association="Self.FK_Spending Transactions_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Spending Transactions" EntitySet="Spending Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Admin" Association="Self.FK_User_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserType_Admin" Association="Self.FK_UserType_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="UserType" EntitySet="UserType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserType_Customer" Association="Self.FK_UserType_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="UserType" EntitySet="UserType" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="INF272ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AdminSurname" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AdminEmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Admin" FromRole="Admin" ToRole="User" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK_UserType_Admin" FromRole="Admin" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="Budget_Limit">
+          <Key>
+            <PropertyRef Name="LimitID" />
+          </Key>
+          <Property Name="LimitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LimitAmount" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="LimitTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Budget_Limit_Type" Relationship="Self.FK_Budget_Limit_Budget_Limit_Type" FromRole="Budget_Limit" ToRole="Budget_Limit_Type" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Budget_Limit_Customer" FromRole="Budget_Limit" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Budget_Limit_Type">
+          <Key>
+            <PropertyRef Name="LimitTypeID" />
+          </Key>
+          <Property Name="LimitTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Budget_Limit" Relationship="Self.FK_Budget_Limit_Budget_Limit_Type" FromRole="Budget_Limit_Type" ToRole="Budget_Limit" />
+        </EntityType>
+        <EntityType Name="Compound_Interest">
+          <Key>
+            <PropertyRef Name="CompoundInterestID" />
+          </Key>
+          <Property Name="CompoundInterestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Annually" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SemiAnnually" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Quarterly" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Monthly" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Interest_Type" Relationship="Self.FK_Interest_Type_Compound_Interest" FromRole="Compound_Interest" ToRole="Interest_Type" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CustomerSurname" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="NetWorthID" Type="Int32" Nullable="false" />
+          <Property Name="IncomeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Budget_Limit" Relationship="Self.FK_Budget_Limit_Customer" FromRole="Customer" ToRole="Budget_Limit" />
+          <NavigationProperty Name="Customer_Networth" Relationship="Self.FK_Customer_Networth_Customer" FromRole="Customer" ToRole="Customer_Networth" />
+          <NavigationProperty Name="Income" Relationship="Self.FK_Customer_Income" FromRole="Customer" ToRole="Income" />
+          <NavigationProperty Name="Investments_Made" Relationship="Self.FK_Investments_Made_Customer" FromRole="Customer" ToRole="Investments_Made" />
+          <NavigationProperty Name="Spending_Transactions" Relationship="Self.FK_Spending_Transactions_Customer" FromRole="Customer" ToRole="Spending_Transactions" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK_UserType_Customer" FromRole="Customer" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="Customer_Networth">
+          <Key>
+            <PropertyRef Name="NetworthID" />
+          </Key>
+          <Property Name="NetworthID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NetworthAmount" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="TransID" Type="Int32" Nullable="false" />
+          <Property Name="IncomeID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_Networth_Customer" FromRole="Customer_Networth" ToRole="Customer" />
+          <NavigationProperty Name="Income" Relationship="Self.FK_Customer_Networth_Income" FromRole="Customer_Networth" ToRole="Income" />
+          <NavigationProperty Name="Spending_Transactions" Relationship="Self.FK_Customer_Networth_Spending_Transactions" FromRole="Customer_Networth" ToRole="Spending_Transactions" />
+        </EntityType>
+        <EntityType Name="Fixed_Interest">
+          <Key>
+            <PropertyRef Name="FixedInterestID" />
+          </Key>
+          <Property Name="FixedInterestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Annually" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SemiAnnually" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Quarterly" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Monthly" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Interest_Type" Relationship="Self.FK_Interest_Type_Fixed_Interest" FromRole="Fixed_Interest" ToRole="Interest_Type" />
+        </EntityType>
+        <EntityType Name="Income">
+          <Key>
+            <PropertyRef Name="IncomeID" />
+          </Key>
+          <Property Name="IncomeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncomeAmount" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="IncomeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="IncomeDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Income" FromRole="Income" ToRole="Customer" />
+          <NavigationProperty Name="Customer_Networth" Relationship="Self.FK_Customer_Networth_Income" FromRole="Income" ToRole="Customer_Networth" />
+          <NavigationProperty Name="Income_Type" Relationship="Self.FK_Income_Income_Type" FromRole="Income" ToRole="Income_Type" />
+        </EntityType>
+        <EntityType Name="Income_Type">
+          <Key>
+            <PropertyRef Name="IncomeTypeID" />
+          </Key>
+          <Property Name="IncomeTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Incomes" Relationship="Self.FK_Income_Income_Type" FromRole="Income_Type" ToRole="Income" />
+        </EntityType>
+        <EntityType Name="Interest_Type">
+          <Key>
+            <PropertyRef Name="InterestTypeID" />
+          </Key>
+          <Property Name="InterestTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompoundInterestID" Type="Int32" Nullable="false" />
+          <Property Name="FixedInterestID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Compound_Interest" Relationship="Self.FK_Interest_Type_Compound_Interest" FromRole="Interest_Type" ToRole="Compound_Interest" />
+          <NavigationProperty Name="Fixed_Interest" Relationship="Self.FK_Interest_Type_Fixed_Interest" FromRole="Interest_Type" ToRole="Fixed_Interest" />
+          <NavigationProperty Name="Investments_Made" Relationship="Self.FK_Investments_Made_Interest_Type" FromRole="Interest_Type" ToRole="Investments_Made" />
+        </EntityType>
+        <EntityType Name="Investment_Type">
+          <Key>
+            <PropertyRef Name="InvestTypeID" />
+          </Key>
+          <Property Name="InvestTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Investments_Made" Relationship="Self.FK_Investments_Made_Investment_Type" FromRole="Investment_Type" ToRole="Investments_Made" />
+        </EntityType>
+        <EntityType Name="Investments_Made">
+          <Key>
+            <PropertyRef Name="InvestID" />
+          </Key>
+          <Property Name="InvestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvestAmount" Type="Int32" Nullable="false" />
+          <Property Name="InterestRate" Type="Double" Nullable="false" />
+          <Property Name="NumOfYears" Type="Double" Nullable="false" />
+          <Property Name="InterestTypeID" Type="Int32" Nullable="false" />
+          <Property Name="InvestTypeID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Investments_Made_Customer" FromRole="Investments_Made" ToRole="Customer" />
+          <NavigationProperty Name="Interest_Type" Relationship="Self.FK_Investments_Made_Interest_Type" FromRole="Investments_Made" ToRole="Interest_Type" />
+          <NavigationProperty Name="Investment_Type" Relationship="Self.FK_Investments_Made_Investment_Type" FromRole="Investments_Made" ToRole="Investment_Type" />
+        </EntityType>
+        <EntityType Name="Spending_Transaction">
+          <Key>
+            <PropertyRef Name="TransID" />
+          </Key>
+          <Property Name="TransID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransAmount" Type="Int32" Nullable="false" />
+          <Property Name="TransDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Spending_Transactions_Customer" FromRole="Spending_Transactions" ToRole="Customer" />
+          <NavigationProperty Name="Customer_Networth" Relationship="Self.FK_Customer_Networth_Spending_Transactions" FromRole="Spending_Transactions" ToRole="Customer_Networth" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+          <Property Name="AdminID" Type="Int32" Nullable="false" />
+          <Property Name="GUID" Type="Int32" Nullable="false" />
+          <Property Name="GUIDExpirey" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_User_Admin" FromRole="User" ToRole="Admin" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK_User_UserType" FromRole="User" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_UserType_Admin" FromRole="UserType" ToRole="Admin" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_UserType_Customer" FromRole="UserType" ToRole="Customer" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_UserType" FromRole="UserType" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_User_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="AdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserType_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Budget_Limit_Budget_Limit_Type">
+          <End Role="Budget_Limit_Type" Type="Self.Budget_Limit_Type" Multiplicity="1" />
+          <End Role="Budget_Limit" Type="Self.Budget_Limit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Budget_Limit_Type">
+              <PropertyRef Name="LimitTypeID" />
+            </Principal>
+            <Dependent Role="Budget_Limit">
+              <PropertyRef Name="LimitTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Budget_Limit_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Budget_Limit" Type="Self.Budget_Limit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Budget_Limit">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Interest_Type_Compound_Interest">
+          <End Role="Compound_Interest" Type="Self.Compound_Interest" Multiplicity="1" />
+          <End Role="Interest_Type" Type="Self.Interest_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compound_Interest">
+              <PropertyRef Name="CompoundInterestID" />
+            </Principal>
+            <Dependent Role="Interest_Type">
+              <PropertyRef Name="CompoundInterestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Networth_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Customer_Networth" Type="Self.Customer_Networth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Customer_Networth">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Income">
+          <End Role="Income" Type="Self.Income" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Income">
+              <PropertyRef Name="IncomeID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="IncomeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investments_Made_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Investments_Made" Type="Self.Investments_Made" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Investments_Made">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Spending_Transactions_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Spending_Transactions" Type="Self.Spending_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Spending_Transactions">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserType_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Networth_Income">
+          <End Role="Income" Type="Self.Income" Multiplicity="1" />
+          <End Role="Customer_Networth" Type="Self.Customer_Networth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Income">
+              <PropertyRef Name="IncomeID" />
+            </Principal>
+            <Dependent Role="Customer_Networth">
+              <PropertyRef Name="IncomeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Networth_Spending_Transactions">
+          <End Role="Spending_Transactions" Type="Self.Spending_Transaction" Multiplicity="1" />
+          <End Role="Customer_Networth" Type="Self.Customer_Networth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spending_Transactions">
+              <PropertyRef Name="TransID" />
+            </Principal>
+            <Dependent Role="Customer_Networth">
+              <PropertyRef Name="TransID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Interest_Type_Fixed_Interest">
+          <End Role="Fixed_Interest" Type="Self.Fixed_Interest" Multiplicity="1" />
+          <End Role="Interest_Type" Type="Self.Interest_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fixed_Interest">
+              <PropertyRef Name="FixedInterestID" />
+            </Principal>
+            <Dependent Role="Interest_Type">
+              <PropertyRef Name="FixedInterestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Income_Income_Type">
+          <End Role="Income_Type" Type="Self.Income_Type" Multiplicity="1" />
+          <End Role="Income" Type="Self.Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Income_Type">
+              <PropertyRef Name="IncomeTypeID" />
+            </Principal>
+            <Dependent Role="Income">
+              <PropertyRef Name="IncomeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investments_Made_Interest_Type">
+          <End Role="Interest_Type" Type="Self.Interest_Type" Multiplicity="1" />
+          <End Role="Investments_Made" Type="Self.Investments_Made" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Interest_Type">
+              <PropertyRef Name="InterestTypeID" />
+            </Principal>
+            <Dependent Role="Investments_Made">
+              <PropertyRef Name="InterestTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investments_Made_Investment_Type">
+          <End Role="Investment_Type" Type="Self.Investment_Type" Multiplicity="1" />
+          <End Role="Investments_Made" Type="Self.Investments_Made" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investment_Type">
+              <PropertyRef Name="InvestTypeID" />
+            </Principal>
+            <Dependent Role="Investments_Made">
+              <PropertyRef Name="InvestTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserType">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="INF272ProjectEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Budget_Limits" EntityType="Self.Budget_Limit" />
+          <EntitySet Name="Budget_Limit_Types" EntityType="Self.Budget_Limit_Type" />
+          <EntitySet Name="Compound_Interests" EntityType="Self.Compound_Interest" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Customer_Networths" EntityType="Self.Customer_Networth" />
+          <EntitySet Name="Fixed_Interests" EntityType="Self.Fixed_Interest" />
+          <EntitySet Name="Incomes" EntityType="Self.Income" />
+          <EntitySet Name="Income_Types" EntityType="Self.Income_Type" />
+          <EntitySet Name="Interest_Types" EntityType="Self.Interest_Type" />
+          <EntitySet Name="Investment_Types" EntityType="Self.Investment_Type" />
+          <EntitySet Name="Investments_Mades" EntityType="Self.Investments_Made" />
+          <EntitySet Name="Spending_Transactions" EntityType="Self.Spending_Transaction" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <AssociationSet Name="FK_User_Admin" Association="Self.FK_User_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserType_Admin" Association="Self.FK_UserType_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="UserType" EntitySet="UserTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Budget_Limit_Budget_Limit_Type" Association="Self.FK_Budget_Limit_Budget_Limit_Type">
+            <End Role="Budget_Limit_Type" EntitySet="Budget_Limit_Types" />
+            <End Role="Budget_Limit" EntitySet="Budget_Limits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Budget_Limit_Customer" Association="Self.FK_Budget_Limit_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Budget_Limit" EntitySet="Budget_Limits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Interest_Type_Compound_Interest" Association="Self.FK_Interest_Type_Compound_Interest">
+            <End Role="Compound_Interest" EntitySet="Compound_Interests" />
+            <End Role="Interest_Type" EntitySet="Interest_Types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Networth_Customer" Association="Self.FK_Customer_Networth_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Customer_Networth" EntitySet="Customer_Networths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Income" Association="Self.FK_Customer_Income">
+            <End Role="Income" EntitySet="Incomes" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investments_Made_Customer" Association="Self.FK_Investments_Made_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Investments_Made" EntitySet="Investments_Mades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Spending_Transactions_Customer" Association="Self.FK_Spending_Transactions_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Spending_Transactions" EntitySet="Spending_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserType_Customer" Association="Self.FK_UserType_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="UserType" EntitySet="UserTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Networth_Income" Association="Self.FK_Customer_Networth_Income">
+            <End Role="Income" EntitySet="Incomes" />
+            <End Role="Customer_Networth" EntitySet="Customer_Networths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Networth_Spending_Transactions" Association="Self.FK_Customer_Networth_Spending_Transactions">
+            <End Role="Spending_Transactions" EntitySet="Spending_Transactions" />
+            <End Role="Customer_Networth" EntitySet="Customer_Networths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Interest_Type_Fixed_Interest" Association="Self.FK_Interest_Type_Fixed_Interest">
+            <End Role="Fixed_Interest" EntitySet="Fixed_Interests" />
+            <End Role="Interest_Type" EntitySet="Interest_Types" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Income_Income_Type" Association="Self.FK_Income_Income_Type">
+            <End Role="Income_Type" EntitySet="Income_Types" />
+            <End Role="Income" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investments_Made_Interest_Type" Association="Self.FK_Investments_Made_Interest_Type">
+            <End Role="Interest_Type" EntitySet="Interest_Types" />
+            <End Role="Investments_Made" EntitySet="Investments_Mades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investments_Made_Investment_Type" Association="Self.FK_Investments_Made_Investment_Type">
+            <End Role="Investment_Type" EntitySet="Investment_Types" />
+            <End Role="Investments_Made" EntitySet="Investments_Mades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="INF272ProjectModelStoreContainer" CdmEntityContainer="INF272ProjectEntities1">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="AdminSurname" ColumnName="AdminSurname" />
+                <ScalarProperty Name="AdminEmailAddress" ColumnName="AdminEmailAddress" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Budget_Limits">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Budget_Limit">
+              <MappingFragment StoreEntitySet="Budget Limit">
+                <ScalarProperty Name="LimitID" ColumnName="LimitID" />
+                <ScalarProperty Name="LimitAmount" ColumnName="LimitAmount" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="LimitTypeID" ColumnName="LimitTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Budget_Limit_Types">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Budget_Limit_Type">
+              <MappingFragment StoreEntitySet="Budget Limit Type">
+                <ScalarProperty Name="LimitTypeID" ColumnName="LimitTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compound_Interests">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Compound_Interest">
+              <MappingFragment StoreEntitySet="Compound Interest">
+                <ScalarProperty Name="CompoundInterestID" ColumnName="CompoundInterestID" />
+                <ScalarProperty Name="Annually" ColumnName="Annually" />
+                <ScalarProperty Name="SemiAnnually" ColumnName="SemiAnnually" />
+                <ScalarProperty Name="Quarterly" ColumnName="Quarterly" />
+                <ScalarProperty Name="Monthly" ColumnName="Monthly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerSurname" ColumnName="CustomerSurname" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="NetWorthID" ColumnName="NetWorthID" />
+                <ScalarProperty Name="IncomeID" ColumnName="IncomeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_Networths">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Customer_Networth">
+              <MappingFragment StoreEntitySet="Customer Networth">
+                <ScalarProperty Name="NetworthID" ColumnName="NetworthID" />
+                <ScalarProperty Name="NetworthAmount" ColumnName="NetworthAmount" />
+                <ScalarProperty Name="TransID" ColumnName="TransID" />
+                <ScalarProperty Name="IncomeID" ColumnName="IncomeID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fixed_Interests">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Fixed_Interest">
+              <MappingFragment StoreEntitySet="Fixed Interest">
+                <ScalarProperty Name="FixedInterestID" ColumnName="FixedInterestID" />
+                <ScalarProperty Name="Annually" ColumnName="Annually" />
+                <ScalarProperty Name="SemiAnnually" ColumnName="SemiAnnually" />
+                <ScalarProperty Name="Quarterly" ColumnName="Quarterly" />
+                <ScalarProperty Name="Monthly" ColumnName="Monthly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incomes">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Income">
+              <MappingFragment StoreEntitySet="Income">
+                <ScalarProperty Name="IncomeID" ColumnName="IncomeID" />
+                <ScalarProperty Name="IncomeAmount" ColumnName="IncomeAmount" />
+                <ScalarProperty Name="IncomeTypeID" ColumnName="IncomeTypeID" />
+                <ScalarProperty Name="IncomeDate" ColumnName="IncomeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Income_Types">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Income_Type">
+              <MappingFragment StoreEntitySet="Income Type">
+                <ScalarProperty Name="IncomeTypeID" ColumnName="IncomeTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Interest_Types">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Interest_Type">
+              <MappingFragment StoreEntitySet="Interest Type">
+                <ScalarProperty Name="InterestTypeID" ColumnName="InterestTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CompoundInterestID" ColumnName="CompoundInterestID" />
+                <ScalarProperty Name="FixedInterestID" ColumnName="FixedInterestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Investment_Types">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Investment_Type">
+              <MappingFragment StoreEntitySet="Investment Type">
+                <ScalarProperty Name="InvestTypeID" ColumnName="InvestTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Investments_Mades">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Investments_Made">
+              <MappingFragment StoreEntitySet="Investments Made">
+                <ScalarProperty Name="InvestID" ColumnName="InvestID" />
+                <ScalarProperty Name="InvestAmount" ColumnName="InvestAmount" />
+                <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+                <ScalarProperty Name="NumOfYears" ColumnName="NumOfYears" />
+                <ScalarProperty Name="InterestTypeID" ColumnName="InterestTypeID" />
+                <ScalarProperty Name="InvestTypeID" ColumnName="InvestTypeID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Spending_Transactions">
+            <EntityTypeMapping TypeName="INF272ProjectModel.Spending_Transaction">
+              <MappingFragment StoreEntitySet="Spending Transactions">
+                <ScalarProperty Name="TransID" ColumnName="TransID" />
+                <ScalarProperty Name="TransAmount" ColumnName="TransAmount" />
+                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="INF272ProjectModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="INF272ProjectModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="GUIDExpirey" ColumnName="GUIDExpirey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="INF272ProjectModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

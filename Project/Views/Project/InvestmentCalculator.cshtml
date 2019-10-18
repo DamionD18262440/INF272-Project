@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "InvestmentCalculator";
+    Layout = "~/Views/Shared/StandardLayout.cshtml";
+}
+<link href="~/Content/BudgetLimits.css" rel="stylesheet" />
+@using (Html.BeginForm("InvestmentCalculator", "Project", FormMethod.Post))
+{
+    <section style="z-index:99;position:sticky">
+        <h2>Investment Calculator</h2>
+        <div>
+            <label>Amount(R):</label>
+            <input name="amount" id="Text1" type="text" required />
+            <br />
+            <label>Interest Rate:</label>
+            <input name="interestrate" id="Text1" type="text" required />
+            <br />
+            <label>Interest Type:</label>
+            <select id="Select1" name="interesttype">
+                <option value="1">Compounded</option>
+                <option value="2">Fixed</option>
+            </select>
+            <br />
+            <label>Interest Period:</label>
+            <select id="Select1" name="interestperiod">
+                <option value="1">Annually</option>
+                <option value="2">Semi-Annually</option>
+                <option value="3">Quartley</option>
+                <option value="4">Monthly</option>
+            </select>
+            <br />
+            <label>Investment Type:</label>
+            <select id="Select1" name="investmenttype">
+                <option value="1">Fixed Deposit</option>
+                <option value="2">Annuity</option>
+                <option value="3">Money Market Fund</option>
+            </select><br />
+            <label>Number Of Years:</label>
+            <input id="Text1" type="text" name="numofyears" required/>
+            <br />
+            <input id="Button1" type="submit" value="Calculate" />
+            <br />
+
+            <label>Amount(R):</label>
+            <input id="Text1" type="text" value="@ViewBag.Message" disabled />
+        </div>
+    </section>
+}

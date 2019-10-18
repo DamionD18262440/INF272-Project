@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="de2ac442f74343ceb1e726baef9da8fa" Name="Diagram1" ZoomLevel="34">
+        <EntityTypeShape EntityType="INF272ProjectModel.Admin" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.Budget_Limit" Width="1.5" PointX="7.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.Budget_Limit_Type" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.Compound_Interest" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.Customer" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.Customer_Networth" Width="1.5" PointX="9.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.Fixed_Interest" Width="1.5" PointX="6" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.Income" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.Income_Type" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.Interest_Type" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.Investment_Type" Width="1.5" PointX="8.25" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.Investments_Made" Width="1.5" PointX="10.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.Spending_Transaction" Width="1.5" PointX="7.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.sysdiagram" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.User" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INF272ProjectModel.UserType" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="INF272ProjectModel.FK_User_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_UserType_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Budget_Limit_Budget_Limit_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Budget_Limit_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Interest_Type_Compound_Interest" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Customer_Networth_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Customer_Income" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Investments_Made_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Spending_Transactions_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_UserType_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Customer_Networth_Income" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Customer_Networth_Spending_Transactions" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Interest_Type_Fixed_Interest" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Income_Income_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Investments_Made_Interest_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_Investments_Made_Investment_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="INF272ProjectModel.FK_User_UserType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
