@@ -9,7 +9,7 @@ namespace Project.Controllers
 {
     public class ProjectController : Controller
     {
-        INF272ProjectEntities BudgetDB = new INF272ProjectEntities();
+        INF272ProjectEntities1 BudgetDB = new INF272ProjectEntities1();
         // GET: Project
         public ActionResult Login()
         {
@@ -117,6 +117,7 @@ namespace Project.Controllers
         }
         public ActionResult MonthlySpending()
         {
+
             return View();
         }
         public ActionResult Register()
