@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tr4yModelStoreContainer" CdmEntityContainer="BudgetDBEntities">
+    <EntitySetMapping Name="BudgetLimits">
+      <EntityTypeMapping TypeName="tr4yModel.BudgetLimit">
+        <MappingFragment StoreEntitySet="BudgetLimit">
+          <ScalarProperty Name="BudgetLimitID" ColumnName="BudgetLimitID" />
+          <ScalarProperty Name="FoodLimit" ColumnName="FoodLimit" />
+          <ScalarProperty Name="ClothesLimit" ColumnName="ClothesLimit" />
+          <ScalarProperty Name="AlcoholLimit" ColumnName="AlcoholLimit" />
+          <ScalarProperty Name="OtherLimit" ColumnName="OtherLimit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Donations">
+      <EntityTypeMapping TypeName="tr4yModel.Donation">
+        <MappingFragment StoreEntitySet="Donation">
+          <ScalarProperty Name="DonationID" ColumnName="DonationID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incomes">
+      <EntityTypeMapping TypeName="tr4yModel.Income">
+        <MappingFragment StoreEntitySet="Income">
+          <ScalarProperty Name="IncomeID" ColumnName="IncomeID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="IncomeTypeID" ColumnName="IncomeTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IncomeTypes">
+      <EntityTypeMapping TypeName="tr4yModel.IncomeType">
+        <MappingFragment StoreEntitySet="IncomeType">
+          <ScalarProperty Name="IncomeTypeID" ColumnName="IncomeTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InterestPeriods">
+      <EntityTypeMapping TypeName="tr4yModel.InterestPeriod">
+        <MappingFragment StoreEntitySet="InterestPeriod">
+          <ScalarProperty Name="InterestPeriodID" ColumnName="InterestPeriodID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InterestTypes">
+      <EntityTypeMapping TypeName="tr4yModel.InterestType">
+        <MappingFragment StoreEntitySet="InterestType">
+          <ScalarProperty Name="InterestTypeID" ColumnName="InterestTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Investments">
+      <EntityTypeMapping TypeName="tr4yModel.Investment">
+        <MappingFragment StoreEntitySet="Investment">
+          <ScalarProperty Name="InvestmentID" ColumnName="InvestmentID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="NumOfYears" ColumnName="NumOfYears" />
+          <ScalarProperty Name="TotalInvest" ColumnName="TotalInvest" />
+          <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+          <ScalarProperty Name="InterestPeriodID" ColumnName="InterestPeriodID" />
+          <ScalarProperty Name="InterestTypeID" ColumnName="InterestTypeID" />
+          <ScalarProperty Name="InvestmentTypeID" ColumnName="InvestmentTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvestmentTypes">
+      <EntityTypeMapping TypeName="tr4yModel.InvestmentType">
+        <MappingFragment StoreEntitySet="InvestmentType">
+          <ScalarProperty Name="InvestmentTypeID" ColumnName="InvestmentTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MonthlySpendings">
+      <EntityTypeMapping TypeName="tr4yModel.MonthlySpending">
+        <MappingFragment StoreEntitySet="MonthlySpending">
+          <ScalarProperty Name="MonthlySpendingID" ColumnName="MonthlySpendingID" />
+          <ScalarProperty Name="FoodAmount" ColumnName="FoodAmount" />
+          <ScalarProperty Name="ClothesAmount" ColumnName="ClothesAmount" />
+          <ScalarProperty Name="AlcoholAmount" ColumnName="AlcoholAmount" />
+          <ScalarProperty Name="OtherAmount" ColumnName="OtherAmount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NetWorths">
+      <EntityTypeMapping TypeName="tr4yModel.NetWorth">
+        <MappingFragment StoreEntitySet="NetWorth">
+          <ScalarProperty Name="NetWorthID" ColumnName="NetWorthID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

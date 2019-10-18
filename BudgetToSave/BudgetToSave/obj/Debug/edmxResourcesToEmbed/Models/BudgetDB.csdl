@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tr4yModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BudgetLimit">
+    <Key>
+      <PropertyRef Name="BudgetLimitID" />
+    </Key>
+    <Property Name="BudgetLimitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FoodLimit" Type="Double" />
+    <Property Name="ClothesLimit" Type="Double" />
+    <Property Name="AlcoholLimit" Type="Double" />
+    <Property Name="OtherLimit" Type="Double" />
+  </EntityType>
+  <EntityType Name="Donation">
+    <Key>
+      <PropertyRef Name="DonationID" />
+    </Key>
+    <Property Name="DonationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Amount" Type="Double" />
+  </EntityType>
+  <EntityType Name="Income">
+    <Key>
+      <PropertyRef Name="IncomeID" />
+    </Key>
+    <Property Name="IncomeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Amount" Type="Double" />
+    <Property Name="IncomeTypeID" Type="Int32" />
+    <NavigationProperty Name="IncomeType" Relationship="Self.FK_Income_IncomeType" FromRole="Income" ToRole="IncomeType" />
+  </EntityType>
+  <EntityType Name="IncomeType">
+    <Key>
+      <PropertyRef Name="IncomeTypeID" />
+    </Key>
+    <Property Name="IncomeTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Incomes" Relationship="Self.FK_Income_IncomeType" FromRole="IncomeType" ToRole="Income" />
+  </EntityType>
+  <EntityType Name="InterestPeriod">
+    <Key>
+      <PropertyRef Name="InterestPeriodID" />
+    </Key>
+    <Property Name="InterestPeriodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Investments" Relationship="Self.FK_Investment_InterestPeriod" FromRole="InterestPeriod" ToRole="Investment" />
+  </EntityType>
+  <EntityType Name="InterestType">
+    <Key>
+      <PropertyRef Name="InterestTypeID" />
+    </Key>
+    <Property Name="InterestTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Investments" Relationship="Self.FK_Investment_InterestType" FromRole="InterestType" ToRole="Investment" />
+  </EntityType>
+  <EntityType Name="Investment">
+    <Key>
+      <PropertyRef Name="InvestmentID" />
+    </Key>
+    <Property Name="InvestmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Amount" Type="Double" />
+    <Property Name="NumOfYears" Type="Double" />
+    <Property Name="TotalInvest" Type="Double" />
+    <Property Name="InterestRate" Type="Double" />
+    <Property Name="InterestPeriodID" Type="Int32" />
+    <Property Name="InterestTypeID" Type="Int32" />
+    <Property Name="InvestmentTypeID" Type="Int32" />
+    <NavigationProperty Name="InterestPeriod" Relationship="Self.FK_Investment_InterestPeriod" FromRole="Investment" ToRole="InterestPeriod" />
+    <NavigationProperty Name="InterestType" Relationship="Self.FK_Investment_InterestType" FromRole="Investment" ToRole="InterestType" />
+    <NavigationProperty Name="InvestmentType" Relationship="Self.FK_Investment_InvestmentType" FromRole="Investment" ToRole="InvestmentType" />
+  </EntityType>
+  <EntityType Name="InvestmentType">
+    <Key>
+      <PropertyRef Name="InvestmentTypeID" />
+    </Key>
+    <Property Name="InvestmentTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Investments" Relationship="Self.FK_Investment_InvestmentType" FromRole="InvestmentType" ToRole="Investment" />
+  </EntityType>
+  <EntityType Name="MonthlySpending">
+    <Key>
+      <PropertyRef Name="MonthlySpendingID" />
+    </Key>
+    <Property Name="MonthlySpendingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FoodAmount" Type="Double" />
+    <Property Name="ClothesAmount" Type="Double" />
+    <Property Name="AlcoholAmount" Type="Double" />
+    <Property Name="OtherAmount" Type="Double" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="NetWorth">
+    <Key>
+      <PropertyRef Name="NetWorthID" />
+    </Key>
+    <Property Name="NetWorthID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Amount" Type="Double" />
+  </EntityType>
+  <Association Name="FK_Income_IncomeType">
+    <End Role="IncomeType" Type="Self.IncomeType" Multiplicity="0..1" />
+    <End Role="Income" Type="Self.Income" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IncomeType">
+        <PropertyRef Name="IncomeTypeID" />
+      </Principal>
+      <Dependent Role="Income">
+        <PropertyRef Name="IncomeTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Investment_InterestPeriod">
+    <End Role="InterestPeriod" Type="Self.InterestPeriod" Multiplicity="0..1" />
+    <End Role="Investment" Type="Self.Investment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InterestPeriod">
+        <PropertyRef Name="InterestPeriodID" />
+      </Principal>
+      <Dependent Role="Investment">
+        <PropertyRef Name="InterestPeriodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Investment_InterestType">
+    <End Role="InterestType" Type="Self.InterestType" Multiplicity="0..1" />
+    <End Role="Investment" Type="Self.Investment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InterestType">
+        <PropertyRef Name="InterestTypeID" />
+      </Principal>
+      <Dependent Role="Investment">
+        <PropertyRef Name="InterestTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Investment_InvestmentType">
+    <End Role="InvestmentType" Type="Self.InvestmentType" Multiplicity="0..1" />
+    <End Role="Investment" Type="Self.Investment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvestmentType">
+        <PropertyRef Name="InvestmentTypeID" />
+      </Principal>
+      <Dependent Role="Investment">
+        <PropertyRef Name="InvestmentTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BudgetDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BudgetLimits" EntityType="Self.BudgetLimit" />
+    <EntitySet Name="Donations" EntityType="Self.Donation" />
+    <EntitySet Name="Incomes" EntityType="Self.Income" />
+    <EntitySet Name="IncomeTypes" EntityType="Self.IncomeType" />
+    <EntitySet Name="InterestPeriods" EntityType="Self.InterestPeriod" />
+    <EntitySet Name="InterestTypes" EntityType="Self.InterestType" />
+    <EntitySet Name="Investments" EntityType="Self.Investment" />
+    <EntitySet Name="InvestmentTypes" EntityType="Self.InvestmentType" />
+    <EntitySet Name="MonthlySpendings" EntityType="Self.MonthlySpending" />
+    <EntitySet Name="NetWorths" EntityType="Self.NetWorth" />
+    <AssociationSet Name="FK_Income_IncomeType" Association="Self.FK_Income_IncomeType">
+      <End Role="IncomeType" EntitySet="IncomeTypes" />
+      <End Role="Income" EntitySet="Incomes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Investment_InterestPeriod" Association="Self.FK_Investment_InterestPeriod">
+      <End Role="InterestPeriod" EntitySet="InterestPeriods" />
+      <End Role="Investment" EntitySet="Investments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Investment_InterestType" Association="Self.FK_Investment_InterestType">
+      <End Role="InterestType" EntitySet="InterestTypes" />
+      <End Role="Investment" EntitySet="Investments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Investment_InvestmentType" Association="Self.FK_Investment_InvestmentType">
+      <End Role="InvestmentType" EntitySet="InvestmentTypes" />
+      <End Role="Investment" EntitySet="Investments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

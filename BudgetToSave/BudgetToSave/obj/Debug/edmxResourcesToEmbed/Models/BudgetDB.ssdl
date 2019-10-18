@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tr4yModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BudgetLimit">
+    <Key>
+      <PropertyRef Name="BudgetLimitID" />
+    </Key>
+    <Property Name="BudgetLimitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FoodLimit" Type="float" />
+    <Property Name="ClothesLimit" Type="float" />
+    <Property Name="AlcoholLimit" Type="float" />
+    <Property Name="OtherLimit" Type="float" />
+  </EntityType>
+  <EntityType Name="Donation">
+    <Key>
+      <PropertyRef Name="DonationID" />
+    </Key>
+    <Property Name="DonationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Amount" Type="float" />
+  </EntityType>
+  <EntityType Name="Income">
+    <Key>
+      <PropertyRef Name="IncomeID" />
+    </Key>
+    <Property Name="IncomeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="IncomeTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="IncomeType">
+    <Key>
+      <PropertyRef Name="IncomeTypeID" />
+    </Key>
+    <Property Name="IncomeTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InterestPeriod">
+    <Key>
+      <PropertyRef Name="InterestPeriodID" />
+    </Key>
+    <Property Name="InterestPeriodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="InterestType">
+    <Key>
+      <PropertyRef Name="InterestTypeID" />
+    </Key>
+    <Property Name="InterestTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Investment">
+    <Key>
+      <PropertyRef Name="InvestmentID" />
+    </Key>
+    <Property Name="InvestmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="NumOfYears" Type="float" />
+    <Property Name="TotalInvest" Type="float" />
+    <Property Name="InterestRate" Type="float" />
+    <Property Name="InterestPeriodID" Type="int" />
+    <Property Name="InterestTypeID" Type="int" />
+    <Property Name="InvestmentTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="InvestmentType">
+    <Key>
+      <PropertyRef Name="InvestmentTypeID" />
+    </Key>
+    <Property Name="InvestmentTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MonthlySpending">
+    <Key>
+      <PropertyRef Name="MonthlySpendingID" />
+    </Key>
+    <Property Name="MonthlySpendingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FoodAmount" Type="float" />
+    <Property Name="ClothesAmount" Type="float" />
+    <Property Name="AlcoholAmount" Type="float" />
+    <Property Name="OtherAmount" Type="float" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NetWorth">
+    <Key>
+      <PropertyRef Name="NetWorthID" />
+    </Key>
+    <Property Name="NetWorthID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Amount" Type="float" />
+  </EntityType>
+  <Association Name="FK_Income_IncomeType">
+    <End Role="IncomeType" Type="Self.IncomeType" Multiplicity="0..1" />
+    <End Role="Income" Type="Self.Income" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IncomeType">
+        <PropertyRef Name="IncomeTypeID" />
+      </Principal>
+      <Dependent Role="Income">
+        <PropertyRef Name="IncomeTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Investment_InterestPeriod">
+    <End Role="InterestPeriod" Type="Self.InterestPeriod" Multiplicity="0..1" />
+    <End Role="Investment" Type="Self.Investment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InterestPeriod">
+        <PropertyRef Name="InterestPeriodID" />
+      </Principal>
+      <Dependent Role="Investment">
+        <PropertyRef Name="InterestPeriodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Investment_InterestType">
+    <End Role="InterestType" Type="Self.InterestType" Multiplicity="0..1" />
+    <End Role="Investment" Type="Self.Investment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InterestType">
+        <PropertyRef Name="InterestTypeID" />
+      </Principal>
+      <Dependent Role="Investment">
+        <PropertyRef Name="InterestTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Investment_InvestmentType">
+    <End Role="InvestmentType" Type="Self.InvestmentType" Multiplicity="0..1" />
+    <End Role="Investment" Type="Self.Investment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvestmentType">
+        <PropertyRef Name="InvestmentTypeID" />
+      </Principal>
+      <Dependent Role="Investment">
+        <PropertyRef Name="InvestmentTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="tr4yModelStoreContainer">
+    <EntitySet Name="BudgetLimit" EntityType="Self.BudgetLimit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IncomeType" EntityType="Self.IncomeType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InterestPeriod" EntityType="Self.InterestPeriod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InterestType" EntityType="Self.InterestType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Investment" EntityType="Self.Investment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvestmentType" EntityType="Self.InvestmentType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MonthlySpending" EntityType="Self.MonthlySpending" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NetWorth" EntityType="Self.NetWorth" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Income_IncomeType" Association="Self.FK_Income_IncomeType">
+      <End Role="IncomeType" EntitySet="IncomeType" />
+      <End Role="Income" EntitySet="Income" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Investment_InterestPeriod" Association="Self.FK_Investment_InterestPeriod">
+      <End Role="InterestPeriod" EntitySet="InterestPeriod" />
+      <End Role="Investment" EntitySet="Investment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Investment_InterestType" Association="Self.FK_Investment_InterestType">
+      <End Role="InterestType" EntitySet="InterestType" />
+      <End Role="Investment" EntitySet="Investment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Investment_InvestmentType" Association="Self.FK_Investment_InvestmentType">
+      <End Role="InvestmentType" EntitySet="InvestmentType" />
+      <End Role="Investment" EntitySet="Investment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
