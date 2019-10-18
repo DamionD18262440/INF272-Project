@@ -12,23 +12,18 @@ namespace Project.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Income_
+    public partial class UserType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Income_()
+        public UserType()
         {
-            this.Person_NetWorth = new HashSet<Person_NetWorth>();
+            this.Users = new HashSet<User>();
         }
     
-        public int IncomeID { get; set; }
-        public decimal IncomeAmout { get; set; }
-        public int IncomeType { get; set; }
-        public System.DateTime IncomeDate { get; set; }
-        public int CustomerID { get; set; }
+        public int UserTypeID { get; set; }
+        public string Description { get; set; }
     
-        public virtual Customer Customer { get; set; }
-        public virtual Income_Type Income_Type { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Person_NetWorth> Person_NetWorth { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

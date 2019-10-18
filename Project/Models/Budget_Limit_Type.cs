@@ -20,7 +20,7 @@ namespace Project.Models
             this.Budget_Limit = new HashSet<Budget_Limit>();
         }
     
-        public int LimitType { get; set; }
+        public int LimitTypeID { get; set; }
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

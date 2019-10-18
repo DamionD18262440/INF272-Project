@@ -13,10 +13,10 @@ namespace Project.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBEntities : DbContext
+    public partial class INF272ProjectEntities : DbContext
     {
-        public DBEntities()
-            : base("name=DBEntities")
+        public INF272ProjectEntities()
+            : base("name=INF272ProjectEntities")
         {
         }
     
@@ -30,15 +30,15 @@ namespace Project.Models
         public virtual DbSet<Budget_Limit_Type> Budget_Limit_Types { get; set; }
         public virtual DbSet<Compound_Interest> Compound_Interests { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Customer_Networth> Customer_Networths { get; set; }
         public virtual DbSet<Fixed_Interest> Fixed_Interests { get; set; }
+        public virtual DbSet<Income> Incomes { get; set; }
         public virtual DbSet<Income_Type> Income_Types { get; set; }
-        public virtual DbSet<Income_> Income_ { get; set; }
         public virtual DbSet<Interest_Type> Interest_Types { get; set; }
-        public virtual DbSet<Investment> Investments { get; set; }
         public virtual DbSet<Investment_Type> Investment_Types { get; set; }
-        public virtual DbSet<Person_NetWorth> Person_NetWorths { get; set; }
+        public virtual DbSet<Investments_Made> Investments_Mades { get; set; }
         public virtual DbSet<Spending_Transaction> Spending_Transactions { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<User_Type> User_Types { get; set; }
+        public virtual DbSet<UserType> UserTypes { get; set; }
     }
 }

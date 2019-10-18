@@ -17,18 +17,20 @@ namespace Project.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Admins = new HashSet<Admin>();
+            this.Customers = new HashSet<Customer>();
         }
     
         public int UserID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public int CustomerID { get; set; }
         public int UserTypeID { get; set; }
+        public int AdminID { get; set; }
+        public int GUID { get; set; }
+        public System.DateTime GUIDExpirey { get; set; }
     
+        public virtual Admin Admin { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Admin> Admins { get; set; }
-        public virtual Customer Customer { get; set; }
-        public virtual User_Type User_Type { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual UserType UserType { get; set; }
     }
 }

@@ -12,18 +12,16 @@ namespace Project.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Investment
+    public partial class Customer_Networth
     {
-        public int InvestID { get; set; }
-        public int InvestAmount { get; set; }
-        public int InterestRate { get; set; }
-        public decimal NumOfYears { get; set; }
-        public string InterestType { get; set; }
-        public string InvestType { get; set; }
+        public int NetworthID { get; set; }
+        public decimal NetworthAmount { get; set; }
+        public int TransID { get; set; }
+        public int IncomeID { get; set; }
         public int CustomerID { get; set; }
     
         public virtual Customer Customer { get; set; }
-        public virtual Interest_Type Interest_Type { get; set; }
-        public virtual Investment_Type Investment_Type { get; set; }
+        public virtual Income Income { get; set; }
+        public virtual Spending_Transaction Spending_Transactions { get; set; }
     }
 }

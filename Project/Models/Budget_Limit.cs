@@ -17,7 +17,7 @@ namespace Project.Models
         public int LimitID { get; set; }
         public decimal LimitAmount { get; set; }
         public int CustomerID { get; set; }
-        public int LimitType { get; set; }
+        public int LimitTypeID { get; set; }
     
         public virtual Budget_Limit_Type Budget_Limit_Type { get; set; }
         public virtual Customer Customer { get; set; }

@@ -14,13 +14,19 @@ namespace Project.Models
     
     public partial class Fixed_Interest
     {
-        public string FixedInterest { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Fixed_Interest()
+        {
+            this.Interest_Type = new HashSet<Interest_Type>();
+        }
+    
+        public int FixedInterestID { get; set; }
         public string Annually { get; set; }
-        public string Semi_Annually { get; set; }
+        public string SemiAnnually { get; set; }
         public string Quarterly { get; set; }
         public string Monthly { get; set; }
-        public string InterestType { get; set; }
     
-        public virtual Interest_Type Interest_Type { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Interest_Type> Interest_Type { get; set; }
     }
 }

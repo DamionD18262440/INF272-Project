@@ -17,13 +17,13 @@ namespace Project.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Income_Type()
         {
-            this.Income_ = new HashSet<Income_>();
+            this.Incomes = new HashSet<Income>();
         }
     
-        public int IncomeType { get; set; }
+        public int IncomeTypeID { get; set; }
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Income_> Income_ { get; set; }
+        public virtual ICollection<Income> Incomes { get; set; }
     }
 }

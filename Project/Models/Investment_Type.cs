@@ -17,13 +17,13 @@ namespace Project.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Investment_Type()
         {
-            this.Investments = new HashSet<Investment>();
+            this.Investments_Made = new HashSet<Investments_Made>();
         }
     
-        public string InvestType { get; set; }
+        public int InvestTypeID { get; set; }
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Investment> Investments { get; set; }
+        public virtual ICollection<Investments_Made> Investments_Made { get; set; }
     }
 }

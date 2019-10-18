@@ -18,31 +18,28 @@ namespace Project.Models
         public Customer()
         {
             this.Budget_Limit = new HashSet<Budget_Limit>();
-            this.Income_ = new HashSet<Income_>();
-            this.Investments = new HashSet<Investment>();
-            this.Person_NetWorth = new HashSet<Person_NetWorth>();
+            this.Customer_Networth = new HashSet<Customer_Networth>();
+            this.Investments_Made = new HashSet<Investments_Made>();
             this.Spending_Transactions = new HashSet<Spending_Transaction>();
-            this.Users = new HashSet<User>();
         }
     
         public int CustomerID { get; set; }
-        public string CustName { get; set; }
-        public string CustSurname { get; set; }
-        public string CustEmailAddress { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerSurname { get; set; }
+        public string EmailAddress { get; set; }
         public int UserID { get; set; }
         public int NetWorthID { get; set; }
+        public int IncomeID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Budget_Limit> Budget_Limit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Income_> Income_ { get; set; }
+        public virtual ICollection<Customer_Networth> Customer_Networth { get; set; }
+        public virtual Income Income { get; set; }
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Investment> Investments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Person_NetWorth> Person_NetWorth { get; set; }
+        public virtual ICollection<Investments_Made> Investments_Made { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Spending_Transaction> Spending_Transactions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
     }
 }

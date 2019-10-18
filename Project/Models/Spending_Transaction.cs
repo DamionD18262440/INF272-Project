@@ -17,7 +17,7 @@ namespace Project.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Spending_Transaction()
         {
-            this.Person_NetWorth = new HashSet<Person_NetWorth>();
+            this.Customer_Networth = new HashSet<Customer_Networth>();
         }
     
         public int TransID { get; set; }
@@ -27,6 +27,6 @@ namespace Project.Models
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Person_NetWorth> Person_NetWorth { get; set; }
+        public virtual ICollection<Customer_Networth> Customer_Networth { get; set; }
     }
 }

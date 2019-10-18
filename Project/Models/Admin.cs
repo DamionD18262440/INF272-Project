@@ -14,11 +14,19 @@ namespace Project.Models
     
     public partial class Admin
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Admin()
+        {
+            this.Users = new HashSet<User>();
+        }
+    
+        public int AdminID { get; set; }
         public string AdminName { get; set; }
         public string AdminSurname { get; set; }
         public string AdminEmailAddress { get; set; }
         public int UserID { get; set; }
     
-        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -17,18 +17,17 @@ namespace Project.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Interest_Type()
         {
-            this.Compound_Interest = new HashSet<Compound_Interest>();
-            this.Fixed_Interest = new HashSet<Fixed_Interest>();
-            this.Investments = new HashSet<Investment>();
+            this.Investments_Made = new HashSet<Investments_Made>();
         }
     
-        public string InterestType { get; set; }
+        public int InterestTypeID { get; set; }
+        public string Description { get; set; }
+        public int CompoundInterestID { get; set; }
+        public int FixedInterestID { get; set; }
     
+        public virtual Compound_Interest Compound_Interest { get; set; }
+        public virtual Fixed_Interest Fixed_Interest { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Compound_Interest> Compound_Interest { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Fixed_Interest> Fixed_Interest { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Investment> Investments { get; set; }
+        public virtual ICollection<Investments_Made> Investments_Made { get; set; }
     }
 }
