@@ -15,6 +15,7 @@
     <EntitySetMapping Name="Donations">
       <EntityTypeMapping TypeName="tr4yModel.Donation">
         <MappingFragment StoreEntitySet="Donation">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
           <ScalarProperty Name="DonationID" ColumnName="DonationID" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -95,6 +96,60 @@
           <ScalarProperty Name="NetWorthID" ColumnName="NetWorthID" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonationLocations">
+      <EntityTypeMapping TypeName="tr4yModel.DonationLocation">
+        <MappingFragment StoreEntitySet="DonationLocation">
+          <ScalarProperty Name="DonationID" ColumnName="DonationID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="DonationLocation1" ColumnName="DonationLocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="tr4yModel.Location">
+        <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="tr4yModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="tr4yModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="DonationID" ColumnName="DonationID" />
+          <ScalarProperty Name="InvestmentID" ColumnName="InvestmentID" />
+          <ScalarProperty Name="IncomeID" ColumnName="IncomeID" />
+          <ScalarProperty Name="NetWorthID" ColumnName="NetWorthID" />
+          <ScalarProperty Name="MonthlySpendingID" ColumnName="MonthlySpendingID" />
+          <ScalarProperty Name="BudgetLimitID" ColumnName="BudgetLimitID" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserUseName" ColumnName="UserUseName" />
+          <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="tr4yModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

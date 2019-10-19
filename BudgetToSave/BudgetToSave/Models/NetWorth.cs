@@ -14,8 +14,17 @@ namespace BudgetToSave.Models
     
     public partial class NetWorth
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public NetWorth()
+        {
+            this.Users = new HashSet<User>();
+        }
+    
         public int NetWorthID { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<double> Amount { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

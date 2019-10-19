@@ -14,8 +14,21 @@ namespace BudgetToSave.Models
     
     public partial class Donation
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Donation()
+        {
+            this.DonationLocations = new HashSet<DonationLocation>();
+            this.Users = new HashSet<User>();
+        }
+    
         public int DonationID { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<double> Amount { get; set; }
+        public Nullable<int> LocationID { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonationLocation> DonationLocations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

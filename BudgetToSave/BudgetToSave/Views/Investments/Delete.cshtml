@@ -1,0 +1,81 @@
+﻿@model BudgetToSave.Models.Investment
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/StandardLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Investment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOfYears)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumOfYears)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalInvest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalInvest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InterestRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InterestRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InterestPeriod.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InterestPeriod.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InterestType.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InterestType.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvestmentType.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvestmentType.Description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

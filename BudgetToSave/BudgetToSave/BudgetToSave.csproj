@@ -136,7 +136,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncomesController.cs" />
+    <Compile Include="Controllers\InterestPeriodsController.cs" />
+    <Compile Include="Controllers\InterestTypesController.cs" />
+    <Compile Include="Controllers\InvestmentsController.cs" />
+    <Compile Include="Controllers\InvestmentTypesController.cs" />
     <Compile Include="Controllers\MonthlySpendingsController.cs" />
+    <Compile Include="Controllers\NetWorthsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -161,6 +166,9 @@
     <Compile Include="Models\Donation.cs">
       <DependentUpon>BudgetDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DonationLocation.cs">
+      <DependentUpon>BudgetDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Income.cs">
       <DependentUpon>BudgetDB.tt</DependentUpon>
     </Compile>
@@ -179,10 +187,22 @@
     <Compile Include="Models\InvestmentType.cs">
       <DependentUpon>BudgetDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Location.cs">
+      <DependentUpon>BudgetDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MonthlySpending.cs">
       <DependentUpon>BudgetDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NetWorth.cs">
+      <DependentUpon>BudgetDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>BudgetDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>BudgetDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserType.cs">
       <DependentUpon>BudgetDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -256,6 +276,31 @@
     <Content Include="Views\MonthlySpendings\Details.cshtml" />
     <Content Include="Views\MonthlySpendings\Edit.cshtml" />
     <Content Include="Views\MonthlySpendings\Index.cshtml" />
+    <Content Include="Views\Investments\Create.cshtml" />
+    <Content Include="Views\Investments\Delete.cshtml" />
+    <Content Include="Views\Investments\Details.cshtml" />
+    <Content Include="Views\Investments\Edit.cshtml" />
+    <Content Include="Views\Investments\Investment.cshtml" />
+    <Content Include="Views\InterestPeriods\Create.cshtml" />
+    <Content Include="Views\InterestPeriods\Delete.cshtml" />
+    <Content Include="Views\InterestPeriods\Details.cshtml" />
+    <Content Include="Views\InterestPeriods\Edit.cshtml" />
+    <Content Include="Views\InterestPeriods\InterestPeriod.cshtml" />
+    <Content Include="Views\InvestmentTypes\Create.cshtml" />
+    <Content Include="Views\InvestmentTypes\Delete.cshtml" />
+    <Content Include="Views\InvestmentTypes\Details.cshtml" />
+    <Content Include="Views\InvestmentTypes\Edit.cshtml" />
+    <Content Include="Views\InvestmentTypes\InvestmentType.cshtml" />
+    <Content Include="Views\InterestTypes\Create.cshtml" />
+    <Content Include="Views\InterestTypes\Delete.cshtml" />
+    <Content Include="Views\InterestTypes\Details.cshtml" />
+    <Content Include="Views\InterestTypes\Edit.cshtml" />
+    <Content Include="Views\InterestTypes\InterestType.cshtml" />
+    <Content Include="Views\NetWorths\Create.cshtml" />
+    <Content Include="Views\NetWorths\Delete.cshtml" />
+    <Content Include="Views\NetWorths\Details.cshtml" />
+    <Content Include="Views\NetWorths\Edit.cshtml" />
+    <Content Include="Views\NetWorths\NetWorth.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

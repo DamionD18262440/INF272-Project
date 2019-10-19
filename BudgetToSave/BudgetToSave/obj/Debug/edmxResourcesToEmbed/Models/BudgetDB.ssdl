@@ -17,6 +17,15 @@
     <Property Name="DonationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Date" Type="date" />
     <Property Name="Amount" Type="float" />
+    <Property Name="LocationID" Type="int" />
+  </EntityType>
+  <EntityType Name="DonationLocation">
+    <Key>
+      <PropertyRef Name="DonationLocation" />
+    </Key>
+    <Property Name="DonationLocation" Type="int" Nullable="false" />
+    <Property Name="LocationID" Type="int" Nullable="false" />
+    <Property Name="DonationID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Income">
     <Key>
@@ -68,6 +77,13 @@
     <Property Name="InvestmentTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="MonthlySpending">
     <Key>
       <PropertyRef Name="MonthlySpendingID" />
@@ -87,6 +103,64 @@
     <Property Name="Date" Type="date" />
     <Property Name="Amount" Type="float" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="55" Nullable="false" />
+    <Property Name="UserSurname" Type="varchar" MaxLength="55" Nullable="false" />
+    <Property Name="UserUseName" Type="varchar" MaxLength="55" Nullable="false" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="55" Nullable="false" />
+    <Property Name="UserTypeID" Type="int" Nullable="false" />
+    <Property Name="BudgetLimitID" Type="int" />
+    <Property Name="MonthlySpendingID" Type="int" />
+    <Property Name="NetWorthID" Type="int" />
+    <Property Name="IncomeID" Type="int" />
+    <Property Name="InvestmentID" Type="int" />
+    <Property Name="DonationID" Type="int" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="UserTypeID" />
+    </Key>
+    <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DonationLocation_Donation">
+    <End Role="Donation" Type="Self.Donation" Multiplicity="1" />
+    <End Role="DonationLocation" Type="Self.DonationLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Donation">
+        <PropertyRef Name="DonationID" />
+      </Principal>
+      <Dependent Role="DonationLocation">
+        <PropertyRef Name="DonationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DonationLocation_Location">
+    <End Role="Location" Type="Self.Location" Multiplicity="1" />
+    <End Role="DonationLocation" Type="Self.DonationLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="DonationLocation">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Income_IncomeType">
     <End Role="IncomeType" Type="Self.IncomeType" Multiplicity="0..1" />
     <End Role="Income" Type="Self.Income" Multiplicity="*" />
@@ -135,17 +209,114 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_User_BudgetLimit">
+    <End Role="BudgetLimit" Type="Self.BudgetLimit" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BudgetLimit">
+        <PropertyRef Name="BudgetLimitID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="BudgetLimitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Donation">
+    <End Role="Donation" Type="Self.Donation" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Donation">
+        <PropertyRef Name="DonationID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="DonationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Income">
+    <End Role="Income" Type="Self.Income" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Income">
+        <PropertyRef Name="IncomeID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IncomeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Investment">
+    <End Role="Investment" Type="Self.Investment" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investment">
+        <PropertyRef Name="InvestmentID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="InvestmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_MonthlySpending">
+    <End Role="MonthlySpending" Type="Self.MonthlySpending" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonthlySpending">
+        <PropertyRef Name="MonthlySpendingID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="MonthlySpendingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_NetWorth">
+    <End Role="NetWorth" Type="Self.NetWorth" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NetWorth">
+        <PropertyRef Name="NetWorthID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="NetWorthID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserType">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="tr4yModelStoreContainer">
     <EntitySet Name="BudgetLimit" EntityType="Self.BudgetLimit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonationLocation" EntityType="Self.DonationLocation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="IncomeType" EntityType="Self.IncomeType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="InterestPeriod" EntityType="Self.InterestPeriod" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="InterestType" EntityType="Self.InterestType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Investment" EntityType="Self.Investment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="InvestmentType" EntityType="Self.InvestmentType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MonthlySpending" EntityType="Self.MonthlySpending" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NetWorth" EntityType="Self.NetWorth" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DonationLocation_Donation" Association="Self.FK_DonationLocation_Donation">
+      <End Role="Donation" EntitySet="Donation" />
+      <End Role="DonationLocation" EntitySet="DonationLocation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DonationLocation_Location" Association="Self.FK_DonationLocation_Location">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="DonationLocation" EntitySet="DonationLocation" />
+    </AssociationSet>
     <AssociationSet Name="FK_Income_IncomeType" Association="Self.FK_Income_IncomeType">
       <End Role="IncomeType" EntitySet="IncomeType" />
       <End Role="Income" EntitySet="Income" />
@@ -161,6 +332,34 @@
     <AssociationSet Name="FK_Investment_InvestmentType" Association="Self.FK_Investment_InvestmentType">
       <End Role="InvestmentType" EntitySet="InvestmentType" />
       <End Role="Investment" EntitySet="Investment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_BudgetLimit" Association="Self.FK_User_BudgetLimit">
+      <End Role="BudgetLimit" EntitySet="BudgetLimit" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Donation" Association="Self.FK_User_Donation">
+      <End Role="Donation" EntitySet="Donation" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Income" Association="Self.FK_User_Income">
+      <End Role="Income" EntitySet="Income" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Investment" Association="Self.FK_User_Investment">
+      <End Role="Investment" EntitySet="Investment" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_MonthlySpending" Association="Self.FK_User_MonthlySpending">
+      <End Role="MonthlySpending" EntitySet="MonthlySpending" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_NetWorth" Association="Self.FK_User_NetWorth">
+      <End Role="NetWorth" EntitySet="NetWorth" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
