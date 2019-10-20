@@ -213,6 +213,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\BudgetLimits.css" />
+    <Content Include="Content\c3.css" />
+    <Content Include="Content\c3.min.css" />
     <Content Include="Content\HomePage.css" />
     <Content Include="Content\NewStandardStyleSheet.css" />
     <Content Include="Content\StandardStyles.css" />
@@ -221,6 +223,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="LICENSE.txt" />
     <Content Include="Models\BudgetDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BudgetDB.Context.cs</LastGenOutput>
@@ -241,6 +244,10 @@
       <DependentUpon>BudgetDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\c3.js" />
+    <Content Include="Scripts\c3.min.js" />
+    <Content Include="Scripts\d3.js" />
+    <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -278,7 +285,6 @@
     <Content Include="Views\MonthlySpendings\Index.cshtml" />
     <Content Include="Views\InterestPeriods\Create.cshtml" />
     <Content Include="Views\InterestPeriods\Delete.cshtml" />
-    <Content Include="Views\InterestPeriods\Details.cshtml" />
     <Content Include="Views\InterestPeriods\Edit.cshtml" />
     <Content Include="Views\InterestPeriods\InterestPeriod.cshtml" />
     <Content Include="Views\InvestmentTypes\Create.cshtml" />

@@ -20,21 +20,6 @@ namespace BudgetToSave.Controllers
             return View(db.InterestPeriods.ToList());
         }
 
-        // GET: InterestPeriods/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            InterestPeriod interestPeriod = db.InterestPeriods.Find(id);
-            if (interestPeriod == null)
-            {
-                return HttpNotFound();
-            }
-            return View(interestPeriod);
-        }
-
         // GET: InterestPeriods/Create
         public ActionResult Create()
         {
@@ -52,7 +37,7 @@ namespace BudgetToSave.Controllers
             {
                 db.InterestPeriods.Add(interestPeriod);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("InterestPeriod");
             }
 
             return View(interestPeriod);
@@ -84,7 +69,7 @@ namespace BudgetToSave.Controllers
             {
                 db.Entry(interestPeriod).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("InterestPeriod");
             }
             return View(interestPeriod);
         }
@@ -112,7 +97,7 @@ namespace BudgetToSave.Controllers
             InterestPeriod interestPeriod = db.InterestPeriods.Find(id);
             db.InterestPeriods.Remove(interestPeriod);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("InterestPeriod");
         }
 
         protected override void Dispose(bool disposing)
