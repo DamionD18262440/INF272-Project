@@ -10,112 +10,107 @@ using BudgetToSave.Models;
 
 namespace BudgetToSave.Controllers
 {
-    public class IncomesController : Controller
+    public class BudgetLimitsController : Controller
     {
         private BudgetDBEntities db = new BudgetDBEntities();
 
-        // GET: Incomes
-        public ActionResult Index()
+        // GET: BudgetLimits
+        public ActionResult BudgetLimits()
         {
-            var incomes = db.Incomes.Include(i => i.IncomeType);
-            return View(incomes.ToList());
+            return View(db.BudgetLimits.ToList());
         }
 
-        // GET: Incomes/Details/5
+        // GET: BudgetLimits/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Income income = db.Incomes.Find(id);
-            if (income == null)
+            BudgetLimit budgetLimit = db.BudgetLimits.Find(id);
+            if (budgetLimit == null)
             {
                 return HttpNotFound();
             }
-            return View(income);
+            return View(budgetLimit);
         }
 
-        // GET: Incomes/Create
+        // GET: BudgetLimits/Create
         public ActionResult Create()
         {
-            ViewBag.IncomeTypeID = new SelectList(db.IncomeTypes, "IncomeTypeID", "Description");
             return View();
         }
 
-        // POST: Incomes/Create
+        // POST: BudgetLimits/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IncomeID,Date,Amount,IncomeTypeID")] Income income)
+        public ActionResult Create([Bind(Include = "BudgetLimitID,FoodLimit,ClothesLimit,AlcoholLimit,OtherLimit")] BudgetLimit budgetLimit)
         {
             if (ModelState.IsValid)
             {
-                db.Incomes.Add(income);
+                db.BudgetLimits.Add(budgetLimit);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IncomeTypeID = new SelectList(db.IncomeTypes, "IncomeTypeID", "Description", income.IncomeTypeID);
-            return View(income);
+            return View(budgetLimit);
         }
 
-        // GET: Incomes/Edit/5
+        // GET: BudgetLimits/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Income income = db.Incomes.Find(id);
-            if (income == null)
+            BudgetLimit budgetLimit = db.BudgetLimits.Find(id);
+            if (budgetLimit == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IncomeTypeID = new SelectList(db.IncomeTypes, "IncomeTypeID", "Description", income.IncomeTypeID);
-            return View(income);
+            return View(budgetLimit);
         }
 
-        // POST: Incomes/Edit/5
+        // POST: BudgetLimits/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IncomeID,Date,Amount,IncomeTypeID")] Income income)
+        public ActionResult Edit([Bind(Include = "BudgetLimitID,FoodLimit,ClothesLimit,AlcoholLimit,OtherLimit")] BudgetLimit budgetLimit)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(income).State = EntityState.Modified;
+                db.Entry(budgetLimit).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IncomeTypeID = new SelectList(db.IncomeTypes, "IncomeTypeID", "Description", income.IncomeTypeID);
-            return View(income);
+            return View(budgetLimit);
         }
 
-        // GET: Incomes/Delete/5
+        // GET: BudgetLimits/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Income income = db.Incomes.Find(id);
-            if (income == null)
+            BudgetLimit budgetLimit = db.BudgetLimits.Find(id);
+            if (budgetLimit == null)
             {
                 return HttpNotFound();
             }
-            return View(income);
+            return View(budgetLimit);
         }
 
-        // POST: Incomes/Delete/5
+        // POST: BudgetLimits/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Income income = db.Incomes.Find(id);
-            db.Incomes.Remove(income);
+            BudgetLimit budgetLimit = db.BudgetLimits.Find(id);
+            db.BudgetLimits.Remove(budgetLimit);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

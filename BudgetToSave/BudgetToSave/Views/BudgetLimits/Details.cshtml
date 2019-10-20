@@ -1,0 +1,51 @@
+﻿@model BudgetToSave.Models.BudgetLimit
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/StandardLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BudgetLimit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodLimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClothesLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClothesLimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlcoholLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlcoholLimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OtherLimit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BudgetLimitID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

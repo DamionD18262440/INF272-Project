@@ -14,10 +14,19 @@ namespace BudgetToSave.Models
     
     public partial class BudgetLimit
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public BudgetLimit()
+        {
+            this.Users = new HashSet<User>();
+        }
+    
         public int BudgetLimitID { get; set; }
         public Nullable<double> FoodLimit { get; set; }
         public Nullable<double> ClothesLimit { get; set; }
         public Nullable<double> AlcoholLimit { get; set; }
         public Nullable<double> OtherLimit { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

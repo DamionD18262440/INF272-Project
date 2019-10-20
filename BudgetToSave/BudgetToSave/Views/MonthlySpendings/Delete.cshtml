@@ -5,61 +5,43 @@
     Layout = "~/Views/Shared/StandardLayout.cshtml";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>MonthlySpending</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FoodAmount)
-        </dt>
+<link href="~/Content/BudgetLimits.css" rel="stylesheet" />
+<section>
+    <h3>Are you sure you want to delete this?</h3>
+    <div class="Register">
+        <h4>MonthlySpending</h4>
+        <hr />
+        <dl>
+            <dt>
+                Food Amount: R @Html.DisplayFor(model => model.FoodAmount)
+            </dt>
+            <dt>
+                 Clothes Amount: R  @Html.DisplayFor(model => model.ClothesAmount)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FoodAmount)
-        </dd>
+      
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ClothesAmount)
-        </dt>
+            <dt>
+                Alcohol Amount: R @Html.DisplayFor(model => model.AlcoholAmount)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ClothesAmount)
-        </dd>
+            <dt>
+                Other Amount: R  @Html.DisplayFor(model => model.OtherAmount)
+            </dt>
+            <dt>
+                Date of Transacion:  @Html.DisplayFor(model => model.Date)
+            </dt>
+            </dl>
+            
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AlcoholAmount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AlcoholAmount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OtherAmount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OtherAmount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</section>

@@ -1,0 +1,113 @@
+﻿@model BudgetToSave.Models.User
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/StandardLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserUseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserUseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BudgetLimit.BudgetLimitID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BudgetLimit.BudgetLimitID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Donation.DonationID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donation.DonationID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Income.IncomeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Income.IncomeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Investment.InvestmentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Investment.InvestmentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonthlySpending.MonthlySpendingID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonthlySpending.MonthlySpendingID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NetWorth.NetWorthID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NetWorth.NetWorthID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserType.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserType.Description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

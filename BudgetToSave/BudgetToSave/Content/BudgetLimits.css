@@ -1,5 +1,7 @@
 ﻿section{
     text-align:center;
+    margin-right:auto;
+    margin-left:auto;
 }
 label {
     display: inline-block;

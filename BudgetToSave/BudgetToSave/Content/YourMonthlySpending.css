@@ -3,7 +3,7 @@
     margin-right:auto;
     margin-left:auto;
     padding:10px;
-    margin:10px;
+    text-align:center;
 }
 table {
     width: 100%;
@@ -45,7 +45,7 @@ section {
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
-    z-index:3;
+    z-index:99;
 }
 
 #ViewbudgetAmount{

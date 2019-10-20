@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="tr4yModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="tr4yModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BudgetLimit">
           <Key>
             <PropertyRef Name="BudgetLimitID" />
@@ -22,6 +22,15 @@
           <Property Name="DonationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="date" />
           <Property Name="Amount" Type="float" />
+          <Property Name="LocationID" Type="int" />
+        </EntityType>
+        <EntityType Name="DonationLocation">
+          <Key>
+            <PropertyRef Name="DonationLocation" />
+          </Key>
+          <Property Name="DonationLocation" Type="int" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="DonationID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Income">
           <Key>
@@ -73,6 +82,13 @@
           <Property Name="InvestmentTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="MonthlySpending">
           <Key>
             <PropertyRef Name="MonthlySpendingID" />
@@ -92,6 +108,54 @@
           <Property Name="Date" Type="date" />
           <Property Name="Amount" Type="float" />
         </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="UserSurname" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="UserUseName" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="55" Nullable="false" />
+          <Property Name="UserTypeID" Type="int" Nullable="false" />
+          <Property Name="BudgetLimitID" Type="int" />
+          <Property Name="MonthlySpendingID" Type="int" />
+          <Property Name="NetWorthID" Type="int" />
+          <Property Name="IncomeID" Type="int" />
+          <Property Name="InvestmentID" Type="int" />
+          <Property Name="DonationID" Type="int" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DonationLocation_Donation">
+          <End Role="Donation" Type="Self.Donation" Multiplicity="1" />
+          <End Role="DonationLocation" Type="Self.DonationLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation">
+              <PropertyRef Name="DonationID" />
+            </Principal>
+            <Dependent Role="DonationLocation">
+              <PropertyRef Name="DonationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DonationLocation_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="DonationLocation" Type="Self.DonationLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="DonationLocation">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Income_IncomeType">
           <End Role="IncomeType" Type="Self.IncomeType" Multiplicity="0..1" />
           <End Role="Income" Type="Self.Income" Multiplicity="*" />
@@ -140,17 +204,113 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_BudgetLimit">
+          <End Role="BudgetLimit" Type="Self.BudgetLimit" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BudgetLimit">
+              <PropertyRef Name="BudgetLimitID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="BudgetLimitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Donation">
+          <End Role="Donation" Type="Self.Donation" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation">
+              <PropertyRef Name="DonationID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DonationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Income">
+          <End Role="Income" Type="Self.Income" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Income">
+              <PropertyRef Name="IncomeID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IncomeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Investment">
+          <End Role="Investment" Type="Self.Investment" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investment">
+              <PropertyRef Name="InvestmentID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="InvestmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_MonthlySpending">
+          <End Role="MonthlySpending" Type="Self.MonthlySpending" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonthlySpending">
+              <PropertyRef Name="MonthlySpendingID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="MonthlySpendingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_NetWorth">
+          <End Role="NetWorth" Type="Self.NetWorth" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NetWorth">
+              <PropertyRef Name="NetWorthID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="NetWorthID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserType">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="tr4yModelStoreContainer">
           <EntitySet Name="BudgetLimit" EntityType="Self.BudgetLimit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonationLocation" EntityType="Self.DonationLocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IncomeType" EntityType="Self.IncomeType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InterestPeriod" EntityType="Self.InterestPeriod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InterestType" EntityType="Self.InterestType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Investment" EntityType="Self.Investment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InvestmentType" EntityType="Self.InvestmentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MonthlySpending" EntityType="Self.MonthlySpending" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NetWorth" EntityType="Self.NetWorth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DonationLocation_Donation" Association="Self.FK_DonationLocation_Donation">
+            <End Role="Donation" EntitySet="Donation" />
+            <End Role="DonationLocation" EntitySet="DonationLocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DonationLocation_Location" Association="Self.FK_DonationLocation_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="DonationLocation" EntitySet="DonationLocation" />
+          </AssociationSet>
           <AssociationSet Name="FK_Income_IncomeType" Association="Self.FK_Income_IncomeType">
             <End Role="IncomeType" EntitySet="IncomeType" />
             <End Role="Income" EntitySet="Income" />
@@ -167,9 +327,36 @@
             <End Role="InvestmentType" EntitySet="InvestmentType" />
             <End Role="Investment" EntitySet="Investment" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_BudgetLimit" Association="Self.FK_User_BudgetLimit">
+            <End Role="BudgetLimit" EntitySet="BudgetLimit" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Donation" Association="Self.FK_User_Donation">
+            <End Role="Donation" EntitySet="Donation" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Income" Association="Self.FK_User_Income">
+            <End Role="Income" EntitySet="Income" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Investment" Association="Self.FK_User_Investment">
+            <End Role="Investment" EntitySet="Investment" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_MonthlySpending" Association="Self.FK_User_MonthlySpending">
+            <End Role="MonthlySpending" EntitySet="MonthlySpending" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_NetWorth" Association="Self.FK_User_NetWorth">
+            <End Role="NetWorth" EntitySet="NetWorth" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="tr4yModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -182,6 +369,7 @@
           <Property Name="ClothesLimit" Type="Double" />
           <Property Name="AlcoholLimit" Type="Double" />
           <Property Name="OtherLimit" Type="Double" />
+          <NavigationProperty Name="Users" Relationship="tr4yModel.FK_User_BudgetLimit" FromRole="BudgetLimit" ToRole="User" />
         </EntityType>
         <EntityType Name="Donation">
           <Key>
@@ -190,6 +378,9 @@
           <Property Name="DonationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="Amount" Type="Double" />
+          <Property Name="LocationID" Type="Int32" />
+          <NavigationProperty Name="DonationLocations" Relationship="tr4yModel.FK_DonationLocation_Donation" FromRole="Donation" ToRole="DonationLocation" />
+          <NavigationProperty Name="Users" Relationship="tr4yModel.FK_User_Donation" FromRole="Donation" ToRole="User" />
         </EntityType>
         <EntityType Name="Income">
           <Key>
@@ -200,6 +391,7 @@
           <Property Name="Amount" Type="Double" />
           <Property Name="IncomeTypeID" Type="Int32" />
           <NavigationProperty Name="IncomeType" Relationship="Self.FK_Income_IncomeType" FromRole="Income" ToRole="IncomeType" />
+          <NavigationProperty Name="Users" Relationship="tr4yModel.FK_User_Income" FromRole="Income" ToRole="User" />
         </EntityType>
         <EntityType Name="IncomeType">
           <Key>
@@ -240,6 +432,7 @@
           <NavigationProperty Name="InterestPeriod" Relationship="Self.FK_Investment_InterestPeriod" FromRole="Investment" ToRole="InterestPeriod" />
           <NavigationProperty Name="InterestType" Relationship="Self.FK_Investment_InterestType" FromRole="Investment" ToRole="InterestType" />
           <NavigationProperty Name="InvestmentType" Relationship="Self.FK_Investment_InvestmentType" FromRole="Investment" ToRole="InvestmentType" />
+          <NavigationProperty Name="Users" Relationship="tr4yModel.FK_User_Investment" FromRole="Investment" ToRole="User" />
         </EntityType>
         <EntityType Name="InvestmentType">
           <Key>
@@ -259,6 +452,7 @@
           <Property Name="AlcoholAmount" Type="Double" />
           <Property Name="OtherAmount" Type="Double" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="tr4yModel.FK_User_MonthlySpending" FromRole="MonthlySpending" ToRole="User" />
         </EntityType>
         <EntityType Name="NetWorth">
           <Key>
@@ -267,6 +461,7 @@
           <Property Name="NetWorthID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="Amount" Type="Double" />
+          <NavigationProperty Name="Users" Relationship="tr4yModel.FK_User_NetWorth" FromRole="NetWorth" ToRole="User" />
         </EntityType>
         <Association Name="FK_Income_IncomeType">
           <End Role="IncomeType" Type="Self.IncomeType" Multiplicity="0..1" />
@@ -343,7 +538,205 @@
             <End Role="InvestmentType" EntitySet="InvestmentTypes" />
             <End Role="Investment" EntitySet="Investments" />
           </AssociationSet>
+          <EntitySet Name="DonationLocations" EntityType="tr4yModel.DonationLocation" />
+          <EntitySet Name="Locations" EntityType="tr4yModel.Location" />
+          <EntitySet Name="Users" EntityType="tr4yModel.User" />
+          <EntitySet Name="UserTypes" EntityType="tr4yModel.UserType" />
+          <AssociationSet Name="FK_User_BudgetLimit" Association="tr4yModel.FK_User_BudgetLimit">
+            <End Role="BudgetLimit" EntitySet="BudgetLimits" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DonationLocation_Donation" Association="tr4yModel.FK_DonationLocation_Donation">
+            <End Role="Donation" EntitySet="Donations" />
+            <End Role="DonationLocation" EntitySet="DonationLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Donation" Association="tr4yModel.FK_User_Donation">
+            <End Role="Donation" EntitySet="Donations" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DonationLocation_Location" Association="tr4yModel.FK_DonationLocation_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="DonationLocation" EntitySet="DonationLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Income" Association="tr4yModel.FK_User_Income">
+            <End Role="Income" EntitySet="Incomes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Investment" Association="tr4yModel.FK_User_Investment">
+            <End Role="Investment" EntitySet="Investments" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_MonthlySpending" Association="tr4yModel.FK_User_MonthlySpending">
+            <End Role="MonthlySpending" EntitySet="MonthlySpendings" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_NetWorth" Association="tr4yModel.FK_User_NetWorth">
+            <End Role="NetWorth" EntitySet="NetWorths" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserType" Association="tr4yModel.FK_User_UserType">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="DonationLocation">
+          <Key>
+            <PropertyRef Name="DonationLocation1" />
+          </Key>
+          <Property Name="DonationLocation1" Type="Int32" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="DonationID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Donation" Relationship="tr4yModel.FK_DonationLocation_Donation" FromRole="DonationLocation" ToRole="Donation" />
+          <NavigationProperty Name="Location" Relationship="tr4yModel.FK_DonationLocation_Location" FromRole="DonationLocation" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DonationLocations" Relationship="tr4yModel.FK_DonationLocation_Location" FromRole="Location" ToRole="DonationLocation" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="UserSurname" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="UserUseName" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+          <Property Name="BudgetLimitID" Type="Int32" />
+          <Property Name="MonthlySpendingID" Type="Int32" />
+          <Property Name="NetWorthID" Type="Int32" />
+          <Property Name="IncomeID" Type="Int32" />
+          <Property Name="InvestmentID" Type="Int32" />
+          <Property Name="DonationID" Type="Int32" />
+          <NavigationProperty Name="BudgetLimit" Relationship="tr4yModel.FK_User_BudgetLimit" FromRole="User" ToRole="BudgetLimit" />
+          <NavigationProperty Name="Donation" Relationship="tr4yModel.FK_User_Donation" FromRole="User" ToRole="Donation" />
+          <NavigationProperty Name="Income" Relationship="tr4yModel.FK_User_Income" FromRole="User" ToRole="Income" />
+          <NavigationProperty Name="Investment" Relationship="tr4yModel.FK_User_Investment" FromRole="User" ToRole="Investment" />
+          <NavigationProperty Name="MonthlySpending" Relationship="tr4yModel.FK_User_MonthlySpending" FromRole="User" ToRole="MonthlySpending" />
+          <NavigationProperty Name="NetWorth" Relationship="tr4yModel.FK_User_NetWorth" FromRole="User" ToRole="NetWorth" />
+          <NavigationProperty Name="UserType" Relationship="tr4yModel.FK_User_UserType" FromRole="User" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="tr4yModel.FK_User_UserType" FromRole="UserType" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_User_BudgetLimit">
+          <End Type="tr4yModel.BudgetLimit" Role="BudgetLimit" Multiplicity="0..1" />
+          <End Type="tr4yModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BudgetLimit">
+              <PropertyRef Name="BudgetLimitID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="BudgetLimitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DonationLocation_Donation">
+          <End Type="tr4yModel.Donation" Role="Donation" Multiplicity="1" />
+          <End Type="tr4yModel.DonationLocation" Role="DonationLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation">
+              <PropertyRef Name="DonationID" />
+            </Principal>
+            <Dependent Role="DonationLocation">
+              <PropertyRef Name="DonationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Donation">
+          <End Type="tr4yModel.Donation" Role="Donation" Multiplicity="0..1" />
+          <End Type="tr4yModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation">
+              <PropertyRef Name="DonationID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DonationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DonationLocation_Location">
+          <End Type="tr4yModel.Location" Role="Location" Multiplicity="1" />
+          <End Type="tr4yModel.DonationLocation" Role="DonationLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="DonationLocation">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Income">
+          <End Type="tr4yModel.Income" Role="Income" Multiplicity="0..1" />
+          <End Type="tr4yModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Income">
+              <PropertyRef Name="IncomeID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IncomeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Investment">
+          <End Type="tr4yModel.Investment" Role="Investment" Multiplicity="0..1" />
+          <End Type="tr4yModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investment">
+              <PropertyRef Name="InvestmentID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="InvestmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_MonthlySpending">
+          <End Type="tr4yModel.MonthlySpending" Role="MonthlySpending" Multiplicity="0..1" />
+          <End Type="tr4yModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonthlySpending">
+              <PropertyRef Name="MonthlySpendingID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="MonthlySpendingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_NetWorth">
+          <End Type="tr4yModel.NetWorth" Role="NetWorth" Multiplicity="0..1" />
+          <End Type="tr4yModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NetWorth">
+              <PropertyRef Name="NetWorthID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="NetWorthID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserType">
+          <End Type="tr4yModel.UserType" Role="UserType" Multiplicity="1" />
+          <End Type="tr4yModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -364,6 +757,7 @@
           <EntitySetMapping Name="Donations">
             <EntityTypeMapping TypeName="tr4yModel.Donation">
               <MappingFragment StoreEntitySet="Donation">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
                 <ScalarProperty Name="DonationID" ColumnName="DonationID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -444,6 +838,49 @@
                 <ScalarProperty Name="NetWorthID" ColumnName="NetWorthID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonationLocations">
+            <EntityTypeMapping TypeName="tr4yModel.DonationLocation">
+              <MappingFragment StoreEntitySet="DonationLocation">
+                <ScalarProperty Name="DonationID" ColumnName="DonationID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="DonationLocation1" ColumnName="DonationLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="tr4yModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="tr4yModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="DonationID" ColumnName="DonationID" />
+                <ScalarProperty Name="InvestmentID" ColumnName="InvestmentID" />
+                <ScalarProperty Name="IncomeID" ColumnName="IncomeID" />
+                <ScalarProperty Name="NetWorthID" ColumnName="NetWorthID" />
+                <ScalarProperty Name="MonthlySpendingID" ColumnName="MonthlySpendingID" />
+                <ScalarProperty Name="BudgetLimitID" ColumnName="BudgetLimitID" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserUseName" ColumnName="UserUseName" />
+                <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="tr4yModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

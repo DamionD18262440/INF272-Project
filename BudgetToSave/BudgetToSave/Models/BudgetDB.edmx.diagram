@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0f4968644e914ae8bc64d2d1c712c771" Name="Diagram1">
+      <Diagram DiagramId="0f4968644e914ae8bc64d2d1c712c771" Name="Diagram1" ZoomLevel="34">
         <EntityTypeShape EntityType="tr4yModel.BudgetLimit" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="tr4yModel.Donation" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="tr4yModel.Income" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
@@ -19,6 +19,19 @@
         <AssociationConnector Association="tr4yModel.FK_Investment_InterestPeriod" ManuallyRouted="false" />
         <AssociationConnector Association="tr4yModel.FK_Investment_InterestType" ManuallyRouted="false" />
         <AssociationConnector Association="tr4yModel.FK_Investment_InvestmentType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="tr4yModel.DonationLocation" Width="1.5" PointX="8" PointY="3.875" />
+        <EntityTypeShape EntityType="tr4yModel.Location" Width="1.5" PointX="5.75" PointY="10" />
+        <EntityTypeShape EntityType="tr4yModel.User" Width="1.5" PointX="10.25" PointY="2.625" />
+        <EntityTypeShape EntityType="tr4yModel.UserType" Width="1.5" PointX="8" PointY="10.25" />
+        <AssociationConnector Association="tr4yModel.FK_User_BudgetLimit" />
+        <AssociationConnector Association="tr4yModel.FK_DonationLocation_Donation" />
+        <AssociationConnector Association="tr4yModel.FK_User_Donation" />
+        <AssociationConnector Association="tr4yModel.FK_DonationLocation_Location" />
+        <AssociationConnector Association="tr4yModel.FK_User_Income" />
+        <AssociationConnector Association="tr4yModel.FK_User_Investment" />
+        <AssociationConnector Association="tr4yModel.FK_User_MonthlySpending" />
+        <AssociationConnector Association="tr4yModel.FK_User_NetWorth" />
+        <AssociationConnector Association="tr4yModel.FK_User_UserType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

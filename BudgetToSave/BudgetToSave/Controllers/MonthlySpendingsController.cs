@@ -19,6 +19,10 @@ namespace BudgetToSave.Controllers
         {
             return View(db.MonthlySpendings.ToList());
         }
+        public ActionResult Home()
+        {
+            return View();
+        }
 
         // GET: MonthlySpendings/Details/5
         public ActionResult Details(int? id)
