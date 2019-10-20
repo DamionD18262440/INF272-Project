@@ -74,6 +74,7 @@
           <Property Name="InterestPeriodID" Type="int" />
           <Property Name="InterestTypeID" Type="int" />
           <Property Name="InvestmentTypeID" Type="int" />
+          <Property Name="Date" Type="date" />
         </EntityType>
         <EntityType Name="InvestmentType">
           <Key>
@@ -433,6 +434,7 @@
           <NavigationProperty Name="InterestType" Relationship="Self.FK_Investment_InterestType" FromRole="Investment" ToRole="InterestType" />
           <NavigationProperty Name="InvestmentType" Relationship="Self.FK_Investment_InvestmentType" FromRole="Investment" ToRole="InvestmentType" />
           <NavigationProperty Name="Users" Relationship="tr4yModel.FK_User_Investment" FromRole="Investment" ToRole="User" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="InvestmentType">
           <Key>
@@ -801,6 +803,7 @@
           <EntitySetMapping Name="Investments">
             <EntityTypeMapping TypeName="tr4yModel.Investment">
               <MappingFragment StoreEntitySet="Investment">
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="InvestmentID" ColumnName="InvestmentID" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="NumOfYears" ColumnName="NumOfYears" />

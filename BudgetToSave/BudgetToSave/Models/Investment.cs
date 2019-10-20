@@ -28,6 +28,7 @@ namespace BudgetToSave.Models
         public Nullable<int> InterestPeriodID { get; set; }
         public Nullable<int> InterestTypeID { get; set; }
         public Nullable<int> InvestmentTypeID { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
         public virtual InterestPeriod InterestPeriod { get; set; }
         public virtual InterestType InterestType { get; set; }
