@@ -1,34 +1,54 @@
 ﻿@model IEnumerable<BudgetToSave.Models.InvestmentType>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "InvestmentType";
     Layout = "~/Views/Shared/StandardLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 style="text-align:center;">InvestmentType</h2>
 
+<link href="~/Content/BudgetLimits.css" rel="stylesheet" />
+<section style="z-index:99;position:sticky">
+    <div class="tbl-header" style="z-index:99;position:sticky">
+        <table cellpadding="5" cellspacing="5" border="1" style="margin-left:40%;margin-right:auto">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th></th>
+            </tr>
+        </table>
+    </div>
+    <div class="tbl-content" style="z-index:99;position:sticky">
+        <table cellpadding="5" cellspacing="5" border="1" style="margin-left:40%;margin-right:auto">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.InvestmentTypeID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.InvestmentTypeID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+    <br />
+
+</section>
 <p>
     @Html.ActionLink("Create New", "Create")
+    <br />
+    <a href="~/Investments/Create">Back To Create Investment</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.InvestmentTypeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.InvestmentTypeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.InvestmentTypeID })
-        </td>
-    </tr>
-}
-
-</table>
+<style>
+    input#Text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>

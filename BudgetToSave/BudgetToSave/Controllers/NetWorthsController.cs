@@ -19,22 +19,6 @@ namespace BudgetToSave.Controllers
         {
             return View(db.NetWorths.ToList());
         }
-
-        // GET: NetWorths/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NetWorth netWorth = db.NetWorths.Find(id);
-            if (netWorth == null)
-            {
-                return HttpNotFound();
-            }
-            return View(netWorth);
-        }
-
         // GET: NetWorths/Create
         public ActionResult Create()
         {

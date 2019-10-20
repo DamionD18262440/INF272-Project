@@ -19,22 +19,6 @@ namespace BudgetToSave.Controllers
         {
             return View(db.InvestmentTypes.ToList());
         }
-
-        // GET: InvestmentTypes/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            InvestmentType investmentType = db.InvestmentTypes.Find(id);
-            if (investmentType == null)
-            {
-                return HttpNotFound();
-            }
-            return View(investmentType);
-        }
-
         // GET: InvestmentTypes/Create
         public ActionResult Create()
         {
@@ -52,7 +36,7 @@ namespace BudgetToSave.Controllers
             {
                 db.InvestmentTypes.Add(investmentType);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("InvestmentType");
             }
 
             return View(investmentType);
@@ -84,7 +68,7 @@ namespace BudgetToSave.Controllers
             {
                 db.Entry(investmentType).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("InvestmentType");
             }
             return View(investmentType);
         }
@@ -112,7 +96,7 @@ namespace BudgetToSave.Controllers
             InvestmentType investmentType = db.InvestmentTypes.Find(id);
             db.InvestmentTypes.Remove(investmentType);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("InvestmentType");
         }
 
         protected override void Dispose(bool disposing)

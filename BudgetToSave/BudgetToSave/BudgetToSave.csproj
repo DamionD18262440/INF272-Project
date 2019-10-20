@@ -283,7 +283,6 @@
     <Content Include="Views\InterestPeriods\InterestPeriod.cshtml" />
     <Content Include="Views\InvestmentTypes\Create.cshtml" />
     <Content Include="Views\InvestmentTypes\Delete.cshtml" />
-    <Content Include="Views\InvestmentTypes\Details.cshtml" />
     <Content Include="Views\InvestmentTypes\Edit.cshtml" />
     <Content Include="Views\InvestmentTypes\InvestmentType.cshtml" />
     <Content Include="Views\InterestTypes\Create.cshtml" />
@@ -293,7 +292,6 @@
     <Content Include="Views\InterestTypes\InterestType.cshtml" />
     <Content Include="Views\NetWorths\Create.cshtml" />
     <Content Include="Views\NetWorths\Delete.cshtml" />
-    <Content Include="Views\NetWorths\Details.cshtml" />
     <Content Include="Views\NetWorths\Edit.cshtml" />
     <Content Include="Views\NetWorths\NetWorth.cshtml" />
     <Content Include="Views\Investments\Create.cshtml" />
