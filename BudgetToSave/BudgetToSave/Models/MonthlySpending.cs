@@ -14,11 +14,20 @@ namespace BudgetToSave.Models
     
     public partial class MonthlySpending
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MonthlySpending()
+        {
+            this.Users = new HashSet<User>();
+        }
+    
         public int MonthlySpendingID { get; set; }
         public Nullable<double> FoodAmount { get; set; }
         public Nullable<double> ClothesAmount { get; set; }
         public Nullable<double> AlcoholAmount { get; set; }
         public Nullable<double> OtherAmount { get; set; }
         public System.DateTime Date { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

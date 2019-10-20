@@ -14,6 +14,12 @@ namespace BudgetToSave.Models
     
     public partial class Investment
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Investment()
+        {
+            this.Users = new HashSet<User>();
+        }
+    
         public int InvestmentID { get; set; }
         public Nullable<double> Amount { get; set; }
         public Nullable<double> NumOfYears { get; set; }
@@ -22,9 +28,12 @@ namespace BudgetToSave.Models
         public Nullable<int> InterestPeriodID { get; set; }
         public Nullable<int> InterestTypeID { get; set; }
         public Nullable<int> InvestmentTypeID { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
         public virtual InterestPeriod InterestPeriod { get; set; }
         public virtual InterestType InterestType { get; set; }
         public virtual InvestmentType InvestmentType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

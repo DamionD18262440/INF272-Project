@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BudgetToSave.Models.InterestPeriod>
+
+@{
+    ViewBag.Title = "InterestPeriod";
+    Layout = "~/Views/Shared/StandardLayout.cshtml";
+}
+
+<link href="~/Content/YourMonthlySpending.css" rel="stylesheet" />
+<h2 style="text-align:center;">Interest Periods</h2>
+<section style="z-index:99;position:sticky">
+    <div class="tbl-header" style="z-index:99;position:sticky">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th></th>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.InterestPeriodID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.InterestPeriodID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+</section>

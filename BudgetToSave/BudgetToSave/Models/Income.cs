@@ -14,11 +14,19 @@ namespace BudgetToSave.Models
     
     public partial class Income
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Income()
+        {
+            this.Users = new HashSet<User>();
+        }
+    
         public int IncomeID { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<double> Amount { get; set; }
         public Nullable<int> IncomeTypeID { get; set; }
     
         public virtual IncomeType IncomeType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

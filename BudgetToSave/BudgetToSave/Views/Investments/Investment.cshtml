@@ -1,0 +1,85 @@
+﻿@model IEnumerable<BudgetToSave.Models.Investment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/StandardLayout.cshtml";
+}
+
+<link href="~/Content/YourMonthlySpending.css" rel="stylesheet" />
+<h2 style="text-align:center;">Investments Made</h2>
+<section style="z-index:99;position:sticky">
+    <div class="tbl-header" style="z-index:99;position:sticky">
+        <table class="table" cellpadding="0" cellspacing="0" border="1">
+            <tr>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Invested Amount
+                </th>
+                <th>
+                    Years Invested
+                </th>
+                <th>
+                    Interest Rate
+                </th>
+                <th>
+                    Interest Period
+                </th>
+                <th>
+                    Interest Type
+                </th>
+                <th>
+                    Investment Type
+                </th>
+                <th>
+                    Final Amount
+                </th>
+                <th></th>
+            </tr>
+        </table>
+    </div>
+    <div class="tbl-content" style="z-index:99;position:sticky">
+        <table cellpadding="0" cellspacing="0" border="1">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumOfYears)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InterestRate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InterestPeriod.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InterestType.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InvestmentType.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalInvest)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.InvestmentID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.InvestmentID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        <br />
+            @Html.ActionLink("Calculate Investment","InvestmentCalculator")
+        </p>
+    </div>
+</section>

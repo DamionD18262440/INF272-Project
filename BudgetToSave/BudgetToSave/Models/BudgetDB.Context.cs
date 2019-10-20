@@ -35,5 +35,10 @@ namespace BudgetToSave.Models
         public virtual DbSet<InvestmentType> InvestmentTypes { get; set; }
         public virtual DbSet<MonthlySpending> MonthlySpendings { get; set; }
         public virtual DbSet<NetWorth> NetWorths { get; set; }
+        public virtual DbSet<DonationLocation> DonationLocations { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserType> UserTypes { get; set; }
     }
 }
