@@ -134,6 +134,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BudgetLimitsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InterestPeriodsController.cs" />
     <Compile Include="Controllers\InterestTypesController.cs" />
@@ -303,6 +304,10 @@
     <Content Include="Views\MonthlySpendings\Delete.cshtml" />
     <Content Include="Views\MonthlySpendings\Edit.cshtml" />
     <Content Include="Views\MonthlySpendings\Index.cshtml" />
+    <Content Include="Views\BudgetLimits\Delete.cshtml" />
+    <Content Include="Views\BudgetLimits\Edit.cshtml" />
+    <Content Include="Views\BudgetLimits\Index.cshtml" />
+    <Content Include="Views\MonthlySpendings\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BudgetToSave.Models.BudgetLimit>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/StandardLayout.cshtml";
+}
+
+
+
+<link href="~/Content/BudgetLimits.css" rel="stylesheet" />
+<section style="z-index:99;position:sticky">
+    @foreach (var item in Model)
+    {
+        <h2>Your Budget Limits</h2>
+        <label>Food:R           </label>
+        <input type="text" name="Food" id="Text" value="@Html.DisplayFor(modelItem => item.FoodLimit)" />
+        <label> @Html.ActionLink("Edit", "Edit", new { id = item.BudgetLimitID }) </label><br />
+
+
+
+        <label>Clothes:R        </label>
+        <input type="text" name="Clothes" id="Text" value=" @Html.DisplayFor(modelItem => item.ClothesLimit)" />
+        <label> @Html.ActionLink("Edit", "Edit", new { id = item.BudgetLimitID }) </label><br />
+        <label>Alcohol:R  </label>
+        <input type="text" name="Alcohol" id="Text" value="@Html.DisplayFor(modelItem => item.AlcoholLimit)" />
+        <label> @Html.ActionLink("Edit", "Edit", new { id = item.BudgetLimitID }) </label><br />
+        <label>Other:R      </label>
+        <input type="text" name="Other" id="Text" value=" @Html.DisplayFor(modelItem => item.OtherLimit)" />
+        <label> @Html.ActionLink("Edit", "Edit", new { id = item.BudgetLimitID }) </label><br />
+    }
+    @using (Html.BeginForm("Index", "MonthlySpendings", FormMethod.Post))
+    {
+        <button type="submit" onclick="window.location.href = 'MonthlySpending'">Confirm</button>
+
+        <button type="submit" onclick="window.location.href = 'MonthlySpending'">Cancel</button>
+    }
+</section>
