@@ -4,33 +4,30 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/StandardLayout.cshtml";
 }
-<link href="~/Content/YourMonthlySpending.css" rel="stylesheet" />
 
+
+<link href="~/Content/YourMonthlySpending.css" rel="stylesheet" />
+<link href="~/Content/YourMonthlySpending.css" rel="stylesheet" />
 <section style="z-index:99;position:sticky">
-    <p>
-        @using (Html.BeginForm("Create New", "Create", FormMethod.Post))
-        {
-        <button type="submit">Add New Transaction</button>}
-        
-        @Html.ActionLink("Create New", "Create")
-    
     <div class="tbl-header" style="z-index:99;position:sticky">
         <table cellpadding="0" cellspacing="0" border="0">
+            @Html.ActionLink("Create New", "Create", new { @class = "btn btn-primary btn-large" })
+
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.FoodAmount)
+                    Date
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ClothesAmount)
+                    Food
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.AlcoholAmount)
+                    Clothes
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.OtherAmount)
+                    Alcohol
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Date)
+                    Other
                 </th>
 
             </tr>
@@ -40,48 +37,31 @@
         <table cellpadding="0" cellspacing="0" border="0">
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FoodAmount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClothesAmount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AlcoholAmount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OtherAmount)
-                </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FoodAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClothesAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AlcoholAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OtherAmount)
+                    </td>
 
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MonthlySpendingID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.MonthlySpendingID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MonthlySpendingID })
-                </td>
-            </tr>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MonthlySpendingID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MonthlySpendingID })
+                    </td>
+                </tr>
             }
+
 
         </table>
     </div>
-    &nbsp;
-    <div class="DonateSection" style="z-index:99;position:sticky">
-        <input type="text" /><br /><br />
-        <button id="DonateButton" type="submit">Donate</button><br />
-    </div><br />
-    <button id="ViewbudgetAmount" type="submit"
-            onclick="window.location.href = 'BudgetLimits'">
-        View Budget Amounts
-    </button><br />
-    &nbsp;
-    <input id="Button1"
-           onclick="window.location.href = 'ReportNetworth'"
-           type="button" value="Networth Report" /><br />
-    &nbsp;
-    <input id="Button1"
-           onclick="window.location.href = 'ReportSavings'"
-           type="button" value="Savings Report" /><br />
 </section>

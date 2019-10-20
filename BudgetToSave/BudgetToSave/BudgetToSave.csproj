@@ -135,7 +135,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IncomesController.cs" />
     <Compile Include="Controllers\InterestPeriodsController.cs" />
     <Compile Include="Controllers\InterestTypesController.cs" />
     <Compile Include="Controllers\InvestmentsController.cs" />
@@ -278,11 +277,6 @@
     <Content Include="Views\Incomes\Details.cshtml" />
     <Content Include="Views\Incomes\Edit.cshtml" />
     <Content Include="Views\Incomes\Index.cshtml" />
-    <Content Include="Views\MonthlySpendings\Create.cshtml" />
-    <Content Include="Views\MonthlySpendings\Delete.cshtml" />
-    <Content Include="Views\MonthlySpendings\Details.cshtml" />
-    <Content Include="Views\MonthlySpendings\Edit.cshtml" />
-    <Content Include="Views\MonthlySpendings\Index.cshtml" />
     <Content Include="Views\InterestPeriods\Create.cshtml" />
     <Content Include="Views\InterestPeriods\Delete.cshtml" />
     <Content Include="Views\InterestPeriods\Edit.cshtml" />
@@ -305,6 +299,10 @@
     <Content Include="Views\Investments\Edit.cshtml" />
     <Content Include="Views\Investments\Investment.cshtml" />
     <Content Include="Views\Investments\InvestmentCalculator.cshtml" />
+    <Content Include="Views\MonthlySpendings\Create.cshtml" />
+    <Content Include="Views\MonthlySpendings\Delete.cshtml" />
+    <Content Include="Views\MonthlySpendings\Edit.cshtml" />
+    <Content Include="Views\MonthlySpendings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
