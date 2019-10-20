@@ -62,6 +62,7 @@
       <PropertyRef Name="InvestmentID" />
     </Key>
     <Property Name="InvestmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" />
     <Property Name="Amount" Type="float" />
     <Property Name="NumOfYears" Type="float" />
     <Property Name="TotalInvest" Type="float" />

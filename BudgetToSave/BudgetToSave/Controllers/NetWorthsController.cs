@@ -52,7 +52,7 @@ namespace BudgetToSave.Controllers
             {
                 db.NetWorths.Add(netWorth);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("NetWorth");
             }
 
             return View(netWorth);
@@ -84,7 +84,7 @@ namespace BudgetToSave.Controllers
             {
                 db.Entry(netWorth).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("NetWorth");
             }
             return View(netWorth);
         }
@@ -112,7 +112,7 @@ namespace BudgetToSave.Controllers
             NetWorth netWorth = db.NetWorths.Find(id);
             db.NetWorths.Remove(netWorth);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("NetWorth");
         }
 
         protected override void Dispose(bool disposing)

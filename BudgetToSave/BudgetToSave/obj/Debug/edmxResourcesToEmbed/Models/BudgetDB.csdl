@@ -73,6 +73,7 @@
     <NavigationProperty Name="InterestType" Relationship="Self.FK_Investment_InterestType" FromRole="Investment" ToRole="InterestType" />
     <NavigationProperty Name="InvestmentType" Relationship="Self.FK_Investment_InvestmentType" FromRole="Investment" ToRole="InvestmentType" />
     <NavigationProperty Name="Users" Relationship="tr4yModel.FK_User_Investment" FromRole="Investment" ToRole="User" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="InvestmentType">
     <Key>

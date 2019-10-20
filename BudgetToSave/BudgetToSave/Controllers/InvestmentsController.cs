@@ -20,22 +20,6 @@ namespace BudgetToSave.Controllers
             var investments = db.Investments.Include(i => i.InterestPeriod).Include(i => i.InterestType).Include(i => i.InvestmentType);
             return View(investments.ToList());
         }
-
-        // GET: Investments/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Investment investment = db.Investments.Find(id);
-            if (investment == null)
-            {
-                return HttpNotFound();
-            }
-            return View(investment);
-        }
-
         // GET: Investments/Create
         public ActionResult Create()
         {
@@ -50,13 +34,13 @@ namespace BudgetToSave.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "InvestmentID,Amount,NumOfYears,TotalInvest,InterestRate,InterestPeriodID,InterestTypeID,InvestmentTypeID")] Investment investment)
+        public ActionResult Create([Bind(Include = "InvestmentID,Amount,NumOfYears,TotalInvest,InterestRate,InterestPeriodID,InterestTypeID,InvestmentTypeID,Date")] Investment investment)
         {
             if (ModelState.IsValid)
             {
                 db.Investments.Add(investment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Investment");
             }
 
             ViewBag.InterestPeriodID = new SelectList(db.InterestPeriods, "InterestPeriodID", "Description", investment.InterestPeriodID);
@@ -88,13 +72,13 @@ namespace BudgetToSave.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "InvestmentID,Amount,NumOfYears,TotalInvest,InterestRate,InterestPeriodID,InterestTypeID,InvestmentTypeID")] Investment investment)
+        public ActionResult Edit([Bind(Include = "InvestmentID,Amount,NumOfYears,TotalInvest,InterestRate,InterestPeriodID,InterestTypeID,InvestmentTypeID,Date")] Investment investment)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(investment).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Investment");
             }
             ViewBag.InterestPeriodID = new SelectList(db.InterestPeriods, "InterestPeriodID", "Description", investment.InterestPeriodID);
             ViewBag.InterestTypeID = new SelectList(db.InterestTypes, "InterestTypeID", "Description", investment.InterestTypeID);
@@ -125,7 +109,7 @@ namespace BudgetToSave.Controllers
             Investment investment = db.Investments.Find(id);
             db.Investments.Remove(investment);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Investment");
         }
 
         protected override void Dispose(bool disposing)
@@ -135,6 +119,95 @@ namespace BudgetToSave.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult InvestmentCalculator()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InvestmentCalculator(double amount, double interestrate, int interesttype, int interestperiod, int investmenttype, double numofyears)
+        {
+            double Mamount = amount;                //investamount
+            double Minterestrate = interestrate;    //interestrate
+            int Minteresttype = interesttype;       //interesttype table
+            int Minterestperiod = interestperiod;   //quarterly yearly...
+            int Minvestmenttype = investmenttype;   //investtype table
+            double Mnumofyears = numofyears;        //numofyears
+
+            if (Minteresttype == 1)
+            {
+                if (Minterestperiod == 1)
+                {
+                    double brackets = (1 + (Minterestrate * 0.01));
+                    double exponent = numofyears * 1;
+                    double power = Math.Pow(brackets, exponent);
+
+                    double compoundinvestment = amount * power;
+
+                    ViewBag.Message = compoundinvestment;
+                }
+                else if (Minterestperiod == 2)
+                {
+                    double brackets = (1 + ((Minterestrate * 0.01) * 0.5));
+                    double exponent = numofyears * 2;
+                    double power = Math.Pow(brackets, exponent);
+
+                    double compoundinvestment = amount * power;
+
+                    ViewBag.Message = compoundinvestment;
+                }
+                else if (Minterestperiod == 3)
+                {
+                    double brackets = (1 + ((Minterestrate * 0.01) * 0.25));
+                    double exponent = numofyears * 4;
+                    double power = Math.Pow(brackets, exponent);
+
+                    double compoundinvestment = amount * power;
+
+                    ViewBag.Message = compoundinvestment;
+                }
+                else if (Minterestperiod == 4)
+                {
+                    double brackets = (1 + ((Minterestrate * 0.01) * 0.083333333));
+                    double exponent = numofyears * 12;
+                    double power = Math.Pow(brackets, exponent);
+
+                    double compoundinvestment = amount * power;
+
+                    ViewBag.Message = compoundinvestment;
+                }
+            }
+            else if (Minteresttype == 2)
+            {
+                if (Minterestperiod == 1)
+                {
+                    double finalinvestment = (amount * (1 + (Minterestrate / 100) * Mnumofyears));
+
+                    ViewBag.Message = finalinvestment;
+                }
+                else if (Minterestperiod == 2)
+                {
+                    double finalinvestment = (amount * (1 + ((Minterestrate * 0.01) * 0.5) * (Mnumofyears * 2)));
+
+                    ViewBag.Message = finalinvestment;
+                }
+                else if (Minterestperiod == 3)
+                {
+                    double finalinvestment = (amount * (1 + ((Minterestrate * 0.01) * 0.25) * (Mnumofyears * 4)));
+
+                    ViewBag.Message = finalinvestment;
+                }
+                else if (Minterestperiod == 4)
+                {
+                    double finalinvestment = (amount * (1 + ((Minterestrate * 0.01) * 0.08333) * (Mnumofyears * 12)));
+
+                    ViewBag.Message = finalinvestment;
+                }
+            }
+
+            return View();
         }
     }
 }

@@ -276,11 +276,6 @@
     <Content Include="Views\MonthlySpendings\Details.cshtml" />
     <Content Include="Views\MonthlySpendings\Edit.cshtml" />
     <Content Include="Views\MonthlySpendings\Index.cshtml" />
-    <Content Include="Views\Investments\Create.cshtml" />
-    <Content Include="Views\Investments\Delete.cshtml" />
-    <Content Include="Views\Investments\Details.cshtml" />
-    <Content Include="Views\Investments\Edit.cshtml" />
-    <Content Include="Views\Investments\Investment.cshtml" />
     <Content Include="Views\InterestPeriods\Create.cshtml" />
     <Content Include="Views\InterestPeriods\Delete.cshtml" />
     <Content Include="Views\InterestPeriods\Details.cshtml" />
@@ -301,6 +296,11 @@
     <Content Include="Views\NetWorths\Details.cshtml" />
     <Content Include="Views\NetWorths\Edit.cshtml" />
     <Content Include="Views\NetWorths\NetWorth.cshtml" />
+    <Content Include="Views\Investments\Create.cshtml" />
+    <Content Include="Views\Investments\Delete.cshtml" />
+    <Content Include="Views\Investments\Edit.cshtml" />
+    <Content Include="Views\Investments\Investment.cshtml" />
+    <Content Include="Views\Investments\InvestmentCalculator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

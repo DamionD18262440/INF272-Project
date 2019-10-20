@@ -59,6 +59,7 @@
     <EntitySetMapping Name="Investments">
       <EntityTypeMapping TypeName="tr4yModel.Investment">
         <MappingFragment StoreEntitySet="Investment">
+          <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="InvestmentID" ColumnName="InvestmentID" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="NumOfYears" ColumnName="NumOfYears" />
