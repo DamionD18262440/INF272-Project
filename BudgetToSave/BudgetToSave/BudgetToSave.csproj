@@ -136,6 +136,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BudgetLimitsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IncomesController.cs" />
+    <Compile Include="Controllers\IncomeTypesController.cs" />
     <Compile Include="Controllers\InterestPeriodsController.cs" />
     <Compile Include="Controllers\InterestTypesController.cs" />
     <Compile Include="Controllers\InvestmentsController.cs" />
@@ -275,9 +277,8 @@
     <Content Include="Views\Shared\StandardLayout.cshtml" />
     <Content Include="Views\Incomes\Create.cshtml" />
     <Content Include="Views\Incomes\Delete.cshtml" />
-    <Content Include="Views\Incomes\Details.cshtml" />
     <Content Include="Views\Incomes\Edit.cshtml" />
-    <Content Include="Views\Incomes\Index.cshtml" />
+    <Content Include="Views\Incomes\Income.cshtml" />
     <Content Include="Views\InterestPeriods\Create.cshtml" />
     <Content Include="Views\InterestPeriods\Delete.cshtml" />
     <Content Include="Views\InterestPeriods\Edit.cshtml" />
@@ -308,6 +309,10 @@
     <Content Include="Views\BudgetLimits\Edit.cshtml" />
     <Content Include="Views\BudgetLimits\Index.cshtml" />
     <Content Include="Views\MonthlySpendings\Home.cshtml" />
+    <Content Include="Views\IncomeTypes\Create.cshtml" />
+    <Content Include="Views\IncomeTypes\Delete.cshtml" />
+    <Content Include="Views\IncomeTypes\Edit.cshtml" />
+    <Content Include="Views\IncomeTypes\IncomeType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
