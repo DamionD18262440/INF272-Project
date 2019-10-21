@@ -7,33 +7,44 @@
 
 <h2>NetWorth</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Amount)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.NetWorthID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.NetWorthID })
-        </td>
-    </tr>
-}
+<link href="~/Content/YourMonthlySpending.css" rel="stylesheet" />
+<section style="z-index:99;position:sticky">
+    <div class="tbl-header" style="z-index:99;position:sticky">
+        <table class="table" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th></th>
+            </tr>
+        </table>
+    </div>
+    <div class="tbl-content" style="z-index:99;position:sticky">
+        <table class="table" cellpadding="0" cellspacing="0" border="0">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.NetWorthID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.NetWorthID })
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    </div>
+
+</section>
