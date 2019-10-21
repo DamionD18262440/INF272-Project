@@ -77,11 +77,9 @@ C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\Antl
 C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\BudgetToSave.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\BudgetToSave.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\BudgetToSave.dll
 C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\BudgetToSave.pdb
-C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\BudgetToSave.csprojAssemblyReference.cache
 C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\BudgetToSave.dll.config
 C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\BudgetToSave.dll
 C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\BudgetToSave.pdb

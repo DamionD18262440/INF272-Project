@@ -127,5 +127,16 @@ namespace BudgetToSave.Controllers
             }
             base.Dispose(disposing);
         }
+       // public ActionResult DownloadFile() //Normal controller method signature – ActionResult return type
+       // {
+            //var fileDownloadName = “download.xlsx"; //provide appropriate file name
+            //var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"; //set content type (MIME type)
+            //IO.FileStream fs = new IO.FileStream(filePath, IO.FileMode.Open, IO.FileAccess.Read); //load file into File Stream
+           // IO.MemoryStream ms = new IO.MemoryStream(); //Instantiate new MemoryStream
+            //fs.CopyTo(ms); //Copy FileStream into MemoryStream
+           // var fsr = new FileStreamResult(ms, contentType); //Create new FileStreamResult from MemoryStream
+           // fsr.FileDownloadName = fileDownloadName; //Set FileResult’s name
+           // return fsr; //Return FileStreamResult object
+        //}
     }
 }

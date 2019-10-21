@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BudgetToSave.Models.Location>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/StandardLayout.cshtml";
+}
+
+<link href="~/Content/YourMonthlySpending.css" rel="stylesheet" />
+<h2 style="text-align:center;">Location</h2>
+<section style="z-index:99;position:sticky">
+    <div class="tbl-header" style="z-index:99;position:sticky">
+        <table class="table" cellpadding="0" cellspacing="0" border="0">
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th><input id="Button1" type="button" value="Create" onclick="window.location.href = '@Url.Action("Create", "Locations")'" /></th>
+            </tr>
+        </table>
+    </div>
+    <div class="tbl-content" style="z-index:99;position:sticky">
+        <table cellpadding="0" cellspacing="0" border="0">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.LocationID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.LocationID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <input id="Button1" type="button" value="Back to Donations" onclick="window.location.href = '@Url.Action("Index", "Donations")'" />
+</section>

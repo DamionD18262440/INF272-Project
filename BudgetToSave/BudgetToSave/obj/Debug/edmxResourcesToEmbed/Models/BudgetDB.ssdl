@@ -18,14 +18,14 @@
     <Property Name="Date" Type="date" />
     <Property Name="Amount" Type="float" />
     <Property Name="LocationID" Type="int" />
+    <Property Name="DonationTypeID" Type="int" />
   </EntityType>
-  <EntityType Name="DonationLocation">
+  <EntityType Name="DonationType">
     <Key>
-      <PropertyRef Name="DonationLocation" />
+      <PropertyRef Name="DonationTypeID" />
     </Key>
-    <Property Name="DonationLocation" Type="int" Nullable="false" />
-    <Property Name="LocationID" Type="int" Nullable="false" />
-    <Property Name="DonationID" Type="int" Nullable="false" />
+    <Property Name="DonationTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Income">
     <Key>
@@ -82,7 +82,7 @@
     <Key>
       <PropertyRef Name="LocationID" />
     </Key>
-    <Property Name="LocationID" Type="int" Nullable="false" />
+    <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="MonthlySpending">
@@ -103,16 +103,6 @@
     <Property Name="NetWorthID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Date" Type="date" />
     <Property Name="Amount" Type="float" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -138,26 +128,26 @@
     <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
-  <Association Name="FK_DonationLocation_Donation">
-    <End Role="Donation" Type="Self.Donation" Multiplicity="1" />
-    <End Role="DonationLocation" Type="Self.DonationLocation" Multiplicity="*" />
+  <Association Name="FK_Donation_DonationType">
+    <End Role="DonationType" Type="Self.DonationType" Multiplicity="0..1" />
+    <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Donation">
-        <PropertyRef Name="DonationID" />
+      <Principal Role="DonationType">
+        <PropertyRef Name="DonationTypeID" />
       </Principal>
-      <Dependent Role="DonationLocation">
-        <PropertyRef Name="DonationID" />
+      <Dependent Role="Donation">
+        <PropertyRef Name="DonationTypeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DonationLocation_Location">
-    <End Role="Location" Type="Self.Location" Multiplicity="1" />
-    <End Role="DonationLocation" Type="Self.DonationLocation" Multiplicity="*" />
+  <Association Name="FK_Donation_Location">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="Donation" Type="Self.Donation" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Location">
         <PropertyRef Name="LocationID" />
       </Principal>
-      <Dependent Role="DonationLocation">
+      <Dependent Role="Donation">
         <PropertyRef Name="LocationID" />
       </Dependent>
     </ReferentialConstraint>
@@ -297,7 +287,7 @@
   <EntityContainer Name="tr4yModelStoreContainer">
     <EntitySet Name="BudgetLimit" EntityType="Self.BudgetLimit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DonationLocation" EntityType="Self.DonationLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonationType" EntityType="Self.DonationType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="IncomeType" EntityType="Self.IncomeType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="InterestPeriod" EntityType="Self.InterestPeriod" Schema="dbo" store:Type="Tables" />
@@ -307,16 +297,15 @@
     <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MonthlySpending" EntityType="Self.MonthlySpending" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NetWorth" EntityType="Self.NetWorth" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_DonationLocation_Donation" Association="Self.FK_DonationLocation_Donation">
+    <AssociationSet Name="FK_Donation_DonationType" Association="Self.FK_Donation_DonationType">
+      <End Role="DonationType" EntitySet="DonationType" />
       <End Role="Donation" EntitySet="Donation" />
-      <End Role="DonationLocation" EntitySet="DonationLocation" />
     </AssociationSet>
-    <AssociationSet Name="FK_DonationLocation_Location" Association="Self.FK_DonationLocation_Location">
+    <AssociationSet Name="FK_Donation_Location" Association="Self.FK_Donation_Location">
       <End Role="Location" EntitySet="Location" />
-      <End Role="DonationLocation" EntitySet="DonationLocation" />
+      <End Role="Donation" EntitySet="Donation" />
     </AssociationSet>
     <AssociationSet Name="FK_Income_IncomeType" Association="Self.FK_Income_IncomeType">
       <End Role="IncomeType" EntitySet="IncomeType" />

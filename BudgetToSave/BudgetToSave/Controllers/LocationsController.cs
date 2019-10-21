@@ -10,116 +10,107 @@ using BudgetToSave.Models;
 
 namespace BudgetToSave.Controllers
 {
-    public class DonationsController : Controller
+    public class LocationsController : Controller
     {
         private BudgetDBEntities db = new BudgetDBEntities();
 
-        // GET: Donations
+        // GET: Locations
         public ActionResult Index()
         {
-            var donations = db.Donations.Include(d => d.DonationType).Include(d => d.Location);
-            return View(donations.ToList());
+            return View(db.Locations.ToList());
         }
 
-        // GET: Donations/Details/5
+        // GET: Locations/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donation donation = db.Donations.Find(id);
-            if (donation == null)
+            Location location = db.Locations.Find(id);
+            if (location == null)
             {
                 return HttpNotFound();
             }
-            return View(donation);
+            return View(location);
         }
 
-        // GET: Donations/Create
+        // GET: Locations/Create
         public ActionResult Create()
         {
-            ViewBag.DonationTypeID = new SelectList(db.DonationTypes, "DonationTypeID", "Description");
-            ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "Description");
             return View();
         }
 
-        // POST: Donations/Create
+        // POST: Locations/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DonationID,Date,Amount,LocationID,DonationTypeID")] Donation donation)
+        public ActionResult Create([Bind(Include = "LocationID,Description")] Location location)
         {
             if (ModelState.IsValid)
             {
-                db.Donations.Add(donation);
+                db.Locations.Add(location);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DonationTypeID = new SelectList(db.DonationTypes, "DonationTypeID", "Description", donation.DonationTypeID);
-            ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "Description", donation.LocationID);
-            return View(donation);
+            return View(location);
         }
 
-        // GET: Donations/Edit/5
+        // GET: Locations/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donation donation = db.Donations.Find(id);
-            if (donation == null)
+            Location location = db.Locations.Find(id);
+            if (location == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DonationTypeID = new SelectList(db.DonationTypes, "DonationTypeID", "Description", donation.DonationTypeID);
-            ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "Description", donation.LocationID);
-            return View(donation);
+            return View(location);
         }
 
-        // POST: Donations/Edit/5
+        // POST: Locations/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DonationID,Date,Amount,LocationID,DonationTypeID")] Donation donation)
+        public ActionResult Edit([Bind(Include = "LocationID,Description")] Location location)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(donation).State = EntityState.Modified;
+                db.Entry(location).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DonationTypeID = new SelectList(db.DonationTypes, "DonationTypeID", "Description", donation.DonationTypeID);
-            ViewBag.LocationID = new SelectList(db.Locations, "LocationID", "Description", donation.LocationID);
-            return View(donation);
+            return View(location);
         }
 
-        // GET: Donations/Delete/5
+        // GET: Locations/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donation donation = db.Donations.Find(id);
-            if (donation == null)
+            Location location = db.Locations.Find(id);
+            if (location == null)
             {
                 return HttpNotFound();
             }
-            return View(donation);
+            return View(location);
         }
 
-        // POST: Donations/Delete/5
+        // POST: Locations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Donation donation = db.Donations.Find(id);
-            db.Donations.Remove(donation);
+            Location location = db.Locations.Find(id);
+            db.Locations.Remove(location);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

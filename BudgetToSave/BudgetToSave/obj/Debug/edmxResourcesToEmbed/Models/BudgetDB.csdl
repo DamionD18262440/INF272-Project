@@ -19,8 +19,10 @@
     <Property Name="Date" Type="DateTime" Precision="0" />
     <Property Name="Amount" Type="Double" />
     <Property Name="LocationID" Type="Int32" />
-    <NavigationProperty Name="DonationLocations" Relationship="tr4yModel.FK_DonationLocation_Donation" FromRole="Donation" ToRole="DonationLocation" />
     <NavigationProperty Name="Users" Relationship="tr4yModel.FK_User_Donation" FromRole="Donation" ToRole="User" />
+    <Property Name="DonationTypeID" Type="Int32" />
+    <NavigationProperty Name="DonationType" Relationship="tr4yModel.FK_Donation_DonationType" FromRole="Donation" ToRole="DonationType" />
+    <NavigationProperty Name="Location" Relationship="tr4yModel.FK_Donation_Location" FromRole="Donation" ToRole="Location" />
   </EntityType>
   <EntityType Name="Income">
     <Key>
@@ -179,26 +181,15 @@
       <End Role="InvestmentType" EntitySet="InvestmentTypes" />
       <End Role="Investment" EntitySet="Investments" />
     </AssociationSet>
-    <EntitySet Name="DonationLocations" EntityType="tr4yModel.DonationLocation" />
-    <EntitySet Name="Locations" EntityType="tr4yModel.Location" />
-    <EntitySet Name="sysdiagrams" EntityType="tr4yModel.sysdiagram" />
     <EntitySet Name="Users" EntityType="tr4yModel.User" />
     <EntitySet Name="UserTypes" EntityType="tr4yModel.UserType" />
     <AssociationSet Name="FK_User_BudgetLimit" Association="tr4yModel.FK_User_BudgetLimit">
       <End Role="BudgetLimit" EntitySet="BudgetLimits" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
-    <AssociationSet Name="FK_DonationLocation_Donation" Association="tr4yModel.FK_DonationLocation_Donation">
-      <End Role="Donation" EntitySet="Donations" />
-      <End Role="DonationLocation" EntitySet="DonationLocations" />
-    </AssociationSet>
     <AssociationSet Name="FK_User_Donation" Association="tr4yModel.FK_User_Donation">
       <End Role="Donation" EntitySet="Donations" />
       <End Role="User" EntitySet="Users" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DonationLocation_Location" Association="tr4yModel.FK_DonationLocation_Location">
-      <End Role="Location" EntitySet="Locations" />
-      <End Role="DonationLocation" EntitySet="DonationLocations" />
     </AssociationSet>
     <AssociationSet Name="FK_User_Income" Association="tr4yModel.FK_User_Income">
       <End Role="Income" EntitySet="Incomes" />
@@ -220,35 +211,17 @@
       <End Role="UserType" EntitySet="UserTypes" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
+    <EntitySet Name="DonationTypes" EntityType="tr4yModel.DonationType" />
+    <AssociationSet Name="FK_Donation_DonationType" Association="tr4yModel.FK_Donation_DonationType">
+      <End Role="DonationType" EntitySet="DonationTypes" />
+      <End Role="Donation" EntitySet="Donations" />
+    </AssociationSet>
+    <EntitySet Name="Locations" EntityType="tr4yModel.Location" />
+    <AssociationSet Name="FK_Donation_Location" Association="tr4yModel.FK_Donation_Location">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Donation" EntitySet="Donations" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="DonationLocation">
-    <Key>
-      <PropertyRef Name="DonationLocation1" />
-    </Key>
-    <Property Name="DonationLocation1" Type="Int32" Nullable="false" />
-    <Property Name="LocationID" Type="Int32" Nullable="false" />
-    <Property Name="DonationID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Donation" Relationship="tr4yModel.FK_DonationLocation_Donation" FromRole="DonationLocation" ToRole="Donation" />
-    <NavigationProperty Name="Location" Relationship="tr4yModel.FK_DonationLocation_Location" FromRole="DonationLocation" ToRole="Location" />
-  </EntityType>
-  <EntityType Name="Location">
-    <Key>
-      <PropertyRef Name="LocationID" />
-    </Key>
-    <Property Name="LocationID" Type="Int32" Nullable="false" />
-    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="DonationLocations" Relationship="tr4yModel.FK_DonationLocation_Location" FromRole="Location" ToRole="DonationLocation" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="UserID" />
@@ -293,18 +266,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DonationLocation_Donation">
-    <End Type="tr4yModel.Donation" Role="Donation" Multiplicity="1" />
-    <End Type="tr4yModel.DonationLocation" Role="DonationLocation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Donation">
-        <PropertyRef Name="DonationID" />
-      </Principal>
-      <Dependent Role="DonationLocation">
-        <PropertyRef Name="DonationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_User_Donation">
     <End Type="tr4yModel.Donation" Role="Donation" Multiplicity="0..1" />
     <End Type="tr4yModel.User" Role="User" Multiplicity="*" />
@@ -314,18 +275,6 @@
       </Principal>
       <Dependent Role="User">
         <PropertyRef Name="DonationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DonationLocation_Location">
-    <End Type="tr4yModel.Location" Role="Location" Multiplicity="1" />
-    <End Type="tr4yModel.DonationLocation" Role="DonationLocation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Location">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="DonationLocation">
-        <PropertyRef Name="LocationID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -386,6 +335,46 @@
       </Principal>
       <Dependent Role="User">
         <PropertyRef Name="UserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DonationType">
+    <Key>
+      <PropertyRef Name="DonationTypeID" />
+    </Key>
+    <Property Name="DonationTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Donations" Relationship="tr4yModel.FK_Donation_DonationType" FromRole="DonationType" ToRole="Donation" />
+  </EntityType>
+  <Association Name="FK_Donation_DonationType">
+    <End Type="tr4yModel.DonationType" Role="DonationType" Multiplicity="0..1" />
+    <End Type="tr4yModel.Donation" Role="Donation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonationType">
+        <PropertyRef Name="DonationTypeID" />
+      </Principal>
+      <Dependent Role="Donation">
+        <PropertyRef Name="DonationTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Donations" Relationship="tr4yModel.FK_Donation_Location" FromRole="Location" ToRole="Donation" />
+  </EntityType>
+  <Association Name="FK_Donation_Location">
+    <End Type="tr4yModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="tr4yModel.Donation" Role="Donation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Donation">
+        <PropertyRef Name="LocationID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

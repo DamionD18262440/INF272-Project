@@ -4,11 +4,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/StandardLayout.cshtml";
 }
-<link href="~/Content/BudgetLimits.css" rel="stylesheet" />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <link href="~/Content/YourMonthlySpending.css" rel="stylesheet" />
 <h2 style="text-align:center;">Donations Made</h2>
 <section style="z-index:99;position:sticky">
@@ -24,7 +21,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.LocationID)
                 </th>
-                <th></th>
+                <th><input id="Button1" type="button" value="Add Donation" onclick="window.location.href = '@Url.Action("Create", "Donations")'" /></th>
             </tr>
         </table>
     </div>
@@ -51,4 +48,5 @@
 
         </table>
     </div>
+
 </section>

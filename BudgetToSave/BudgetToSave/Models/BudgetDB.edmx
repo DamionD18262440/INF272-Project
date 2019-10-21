@@ -109,16 +109,6 @@
           <Property Name="Date" Type="date" />
           <Property Name="Amount" Type="float" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserID" />
@@ -312,7 +302,6 @@
           <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MonthlySpending" EntityType="Self.MonthlySpending" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NetWorth" EntityType="Self.NetWorth" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Donation_DonationType" Association="Self.FK_Donation_DonationType">
@@ -553,8 +542,6 @@
             <End Role="InvestmentType" EntitySet="InvestmentTypes" />
             <End Role="Investment" EntitySet="Investments" />
           </AssociationSet>
-          <EntitySet Name="Locations" EntityType="tr4yModel.Location" />
-          <EntitySet Name="sysdiagrams" EntityType="tr4yModel.sysdiagram" />
           <EntitySet Name="Users" EntityType="tr4yModel.User" />
           <EntitySet Name="UserTypes" EntityType="tr4yModel.UserType" />
           <AssociationSet Name="FK_User_BudgetLimit" Association="tr4yModel.FK_User_BudgetLimit">
@@ -590,29 +577,12 @@
             <End Role="DonationType" EntitySet="DonationTypes" />
             <End Role="Donation" EntitySet="Donations" />
           </AssociationSet>
+          <EntitySet Name="Locations" EntityType="tr4yModel.Location" />
           <AssociationSet Name="FK_Donation_Location" Association="tr4yModel.FK_Donation_Location">
             <End Role="Location" EntitySet="Locations" />
             <End Role="Donation" EntitySet="Donations" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Location">
-          <Key>
-            <PropertyRef Name="LocationID" />
-          </Key>
-          <Property Name="LocationID" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Donations" Relationship="tr4yModel.FK_Donation_Location" FromRole="Location" ToRole="Donation" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserID" />
@@ -749,6 +719,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Donations" Relationship="tr4yModel.FK_Donation_Location" FromRole="Location" ToRole="Donation" />
+        </EntityType>
         <Association Name="FK_Donation_Location">
           <End Type="tr4yModel.Location" Role="Location" Multiplicity="0..1" />
           <End Type="tr4yModel.Donation" Role="Donation" Multiplicity="*" />
@@ -867,25 +845,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Locations">
-            <EntityTypeMapping TypeName="tr4yModel.Location">
-              <MappingFragment StoreEntitySet="Location">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="tr4yModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="tr4yModel.User">
               <MappingFragment StoreEntitySet="User">
@@ -917,6 +876,14 @@
               <MappingFragment StoreEntitySet="DonationType">
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DonationTypeID" ColumnName="DonationTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="tr4yModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -143,6 +143,7 @@
     <Compile Include="Controllers\InterestTypesController.cs" />
     <Compile Include="Controllers\InvestmentsController.cs" />
     <Compile Include="Controllers\InvestmentTypesController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\MonthlySpendingsController.cs" />
     <Compile Include="Controllers\NetWorthsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -197,9 +198,6 @@
       <DependentUpon>BudgetDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NetWorth.cs">
-      <DependentUpon>BudgetDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>BudgetDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
@@ -316,9 +314,12 @@
     <Content Include="Views\IncomeTypes\IncomeType.cshtml" />
     <Content Include="Views\Donations\Create.cshtml" />
     <Content Include="Views\Donations\Delete.cshtml" />
-    <Content Include="Views\Donations\Details.cshtml" />
     <Content Include="Views\Donations\Edit.cshtml" />
     <Content Include="Views\Donations\Index.cshtml" />
+    <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\Locations\Delete.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
