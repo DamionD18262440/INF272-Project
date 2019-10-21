@@ -246,3 +246,11 @@ C:\Users\Jason\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Deb
 C:\Users\Jason\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\BudgetToSave.csproj.CopyComplete
 C:\Users\Jason\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\BudgetToSave.dll
 C:\Users\Jason\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\BudgetToSave.pdb
+C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\CrystalDecisions.Shared.dll
+C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\log4net.dll
+C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\log4net.xml
+C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\BudgetToSave.csprojAssemblyReference.cache
+C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\CrystalDecisions.ReportSource.dll
+C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\CrystalDecisions.Web.dll
