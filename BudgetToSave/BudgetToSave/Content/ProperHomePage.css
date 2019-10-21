@@ -1,0 +1,15 @@
+﻿.TextDiv {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 30px;
+    width: 70%;
+    border: solid black 2px;
+    text-align: center;
+    background-color:lightcyan;
+    font-size:medium;
+}
+
+.Headingtext {
+    text-align: center;
+}

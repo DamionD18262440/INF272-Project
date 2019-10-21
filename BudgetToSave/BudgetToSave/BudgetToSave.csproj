@@ -278,8 +278,8 @@
     <Content Include="Content\BudgetLimits.css" />
     <Content Include="Content\c3.css" />
     <Content Include="Content\c3.min.css" />
-    <Content Include="Content\HomePage.css" />
     <Content Include="Content\NewStandardStyleSheet.css" />
+    <Content Include="Content\ProperHomePage.css" />
     <Content Include="Content\StandardStyles.css" />
     <Content Include="Content\YourMonthlySpending.css" />
     <Content Include="favicon.ico" />
