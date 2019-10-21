@@ -169,7 +169,7 @@
     <Compile Include="Models\Donation.cs">
       <DependentUpon>BudgetDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DonationLocation.cs">
+    <Compile Include="Models\DonationType.cs">
       <DependentUpon>BudgetDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Income.cs">

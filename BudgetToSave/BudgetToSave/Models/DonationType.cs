@@ -12,23 +12,18 @@ namespace BudgetToSave.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Donation
+    public partial class DonationType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Donation()
+        public DonationType()
         {
-            this.Users = new HashSet<User>();
+            this.Donations = new HashSet<Donation>();
         }
     
-        public int DonationID { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<double> Amount { get; set; }
-        public Nullable<int> LocationID { get; set; }
-        public Nullable<int> DonationTypeID { get; set; }
+        public int DonationTypeID { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
-        public virtual DonationType DonationType { get; set; }
-        public virtual Location Location { get; set; }
+        public virtual ICollection<Donation> Donations { get; set; }
     }
 }

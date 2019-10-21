@@ -17,13 +17,13 @@ namespace BudgetToSave.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Location()
         {
-            this.DonationLocations = new HashSet<DonationLocation>();
+            this.Donations = new HashSet<Donation>();
         }
     
         public int LocationID { get; set; }
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DonationLocation> DonationLocations { get; set; }
+        public virtual ICollection<Donation> Donations { get; set; }
     }
 }

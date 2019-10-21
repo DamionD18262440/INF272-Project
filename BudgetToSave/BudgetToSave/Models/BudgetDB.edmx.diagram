@@ -19,20 +19,20 @@
         <AssociationConnector Association="tr4yModel.FK_Investment_InterestPeriod" ManuallyRouted="false" />
         <AssociationConnector Association="tr4yModel.FK_Investment_InterestType" ManuallyRouted="false" />
         <AssociationConnector Association="tr4yModel.FK_Investment_InvestmentType" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="tr4yModel.DonationLocation" Width="1.5" PointX="8.375" PointY="3.875" />
         <EntityTypeShape EntityType="tr4yModel.Location" Width="1.5" PointX="6.125" PointY="10" />
         <EntityTypeShape EntityType="tr4yModel.sysdiagram" Width="1.5" PointX="0.75" PointY="9.75" />
         <EntityTypeShape EntityType="tr4yModel.User" Width="1.5" PointX="10.625" PointY="2.625" />
         <EntityTypeShape EntityType="tr4yModel.UserType" Width="1.5" PointX="15.875" PointY="4.125" />
         <AssociationConnector Association="tr4yModel.FK_User_BudgetLimit" />
-        <AssociationConnector Association="tr4yModel.FK_DonationLocation_Donation" />
         <AssociationConnector Association="tr4yModel.FK_User_Donation" />
-        <AssociationConnector Association="tr4yModel.FK_DonationLocation_Location" />
         <AssociationConnector Association="tr4yModel.FK_User_Income" />
         <AssociationConnector Association="tr4yModel.FK_User_Investment" />
         <AssociationConnector Association="tr4yModel.FK_User_MonthlySpending" />
         <AssociationConnector Association="tr4yModel.FK_User_NetWorth" />
         <AssociationConnector Association="tr4yModel.FK_User_UserType" />
+        <EntityTypeShape EntityType="tr4yModel.DonationType" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="tr4yModel.FK_Donation_DonationType" />
+        <AssociationConnector Association="tr4yModel.FK_Donation_Location" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
