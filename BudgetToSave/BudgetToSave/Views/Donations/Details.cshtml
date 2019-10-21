@@ -1,4 +1,4 @@
-﻿@model BudgetToSave.Models.Income
+﻿@model BudgetToSave.Models.Donation
 
 @{
     ViewBag.Title = "Details";
@@ -8,7 +8,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Income</h4>
+    <h4>Donation</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -28,16 +28,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IncomeType.Description)
+            @Html.DisplayNameFor(model => model.LocationID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IncomeType.Description)
+            @Html.DisplayFor(model => model.LocationID)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IncomeID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DonationID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
