@@ -35,7 +35,8 @@
                 <th>
                     Final Amount
                 </th>
-                <th></th>
+                <th><input id="Button1" type="button" value="Create" onclick="window.location.href = '@Url.Action("Create", "Investments")'" />
+                <input id="Button1" type="button" value="Calculate" onclick="window.location.href = '@Url.Action("InvestmentCalculator", "Investments")'" /></th>
             </tr>
         </table>
     </div>
@@ -77,8 +78,6 @@
 
         </table>
         <p>
-            @Html.ActionLink("Create New", "Create")
-        <br />
             @Html.ActionLink("Calculate Investment","InvestmentCalculator")
         </p>
     </div>
