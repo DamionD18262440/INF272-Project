@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BudgetToSave.Models.Donation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/StandardLayout.cshtml";
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<link href="~/Content/YourMonthlySpending.css" rel="stylesheet" />
+<h2 style="text-align:center;">My Donations</h2>
+<section style="z-index:99;position:sticky">
+    <div class="tbl-header" style="z-index:99;position:sticky">
+        <table class="table" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LocationID)
+                </th>
+                <th></th>
+            </tr>
+        </table>
+    </div>
+    <div class="tbl-content" style="z-index:99;position:sticky">
+        <table cellpadding="0" cellspacing="0" border="0">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocationID)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.DonationID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.DonationID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>

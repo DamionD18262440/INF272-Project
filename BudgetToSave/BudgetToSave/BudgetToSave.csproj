@@ -135,6 +135,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BudgetLimitsController.cs" />
+    <Compile Include="Controllers\DonationLocationsController.cs" />
+    <Compile Include="Controllers\DonationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncomesController.cs" />
     <Compile Include="Controllers\IncomeTypesController.cs" />
@@ -142,6 +144,7 @@
     <Compile Include="Controllers\InterestTypesController.cs" />
     <Compile Include="Controllers\InvestmentsController.cs" />
     <Compile Include="Controllers\InvestmentTypesController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\MonthlySpendingsController.cs" />
     <Compile Include="Controllers\NetWorthsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -313,6 +316,20 @@
     <Content Include="Views\IncomeTypes\Delete.cshtml" />
     <Content Include="Views\IncomeTypes\Edit.cshtml" />
     <Content Include="Views\IncomeTypes\IncomeType.cshtml" />
+    <Content Include="Views\Donations\Create.cshtml" />
+    <Content Include="Views\Donations\Delete.cshtml" />
+    <Content Include="Views\Donations\Edit.cshtml" />
+    <Content Include="Views\Donations\Donation.cshtml" />
+    <Content Include="Views\DonationLocations\Create.cshtml" />
+    <Content Include="Views\DonationLocations\Delete.cshtml" />
+    <Content Include="Views\DonationLocations\Details.cshtml" />
+    <Content Include="Views\DonationLocations\Edit.cshtml" />
+    <Content Include="Views\DonationLocations\Index.cshtml" />
+    <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\Locations\Delete.cshtml" />
+    <Content Include="Views\Locations\Details.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Locations\Location.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
