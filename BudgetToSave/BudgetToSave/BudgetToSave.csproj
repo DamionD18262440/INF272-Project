@@ -135,6 +135,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BudgetLimitsController.cs" />
+    <Compile Include="Controllers\DonationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncomesController.cs" />
     <Compile Include="Controllers\IncomeTypesController.cs" />
@@ -313,6 +314,11 @@
     <Content Include="Views\IncomeTypes\Delete.cshtml" />
     <Content Include="Views\IncomeTypes\Edit.cshtml" />
     <Content Include="Views\IncomeTypes\IncomeType.cshtml" />
+    <Content Include="Views\Donations\Create.cshtml" />
+    <Content Include="Views\Donations\Delete.cshtml" />
+    <Content Include="Views\Donations\Details.cshtml" />
+    <Content Include="Views\Donations\Edit.cshtml" />
+    <Content Include="Views\Donations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
