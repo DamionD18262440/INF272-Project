@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BudgetToSave.Models;
+using Microsoft.Reporting.WebForms;
 
 namespace BudgetToSave.Controllers
 {
@@ -131,6 +132,40 @@ namespace BudgetToSave.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Donations()
+        {
+            return View(db.Donations.ToList());
+        }
+        public ActionResult Reports2(string ReportType)
+        {
+            LocalReport localreport = new LocalReport();
+            localreport.ReportPath = Server.MapPath("~/Report/Report2.rdlc");
+
+            ReportDataSource reportdatasource = new ReportDataSource();
+            reportdatasource.Name = "Donations";
+            reportdatasource.Value = db.Donations.ToList();
+            localreport.DataSources.Add(reportdatasource);
+
+            string reportType = ReportType;
+            string mimeType;
+            string encoding;
+            string FileNameExtension;
+            if (ReportType == "PDF")
+            {
+                FileNameExtension = "pdf";
+            }
+
+            string[] streams;
+            Warning[] warnings;
+            byte[] renderedByte;
+            renderedByte = localreport.Render(ReportType, "", out mimeType, out encoding, out FileNameExtension, out streams, out warnings);
+            // Response.AddHeader("content-disposition", "attachment:filename= MonthlyReport");
+            Response.AddHeader("content-disposition", "DonationReport");
+
+
+            return File(renderedByte, FileNameExtension);
+
         }
     }
 }

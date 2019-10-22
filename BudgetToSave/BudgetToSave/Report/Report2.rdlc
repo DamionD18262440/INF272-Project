@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>You Overall Donations</Value>
+                <Style>
+                  <FontSize>18pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>0.11333in</Top>
+        <Left>1.41542in</Left>
+        <Height>0.35417in</Height>
+        <Width>3.48958in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>1.54861in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.54861in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.54861in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.27083in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Date</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox4">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Amount</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox6">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Location ID</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox6</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.27083in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Date">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Date.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Date</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Amount">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Amount.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Amount</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="LocationID">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!LocationID.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>LocationID</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Details" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>Donations</DataSetName>
+        <Top>1.35069in</Top>
+        <Left>0.97792in</Left>
+        <Height>0.54167in</Height>
+        <Width>4.64583in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Image Name="Image1">
+        <Source>Embedded</Source>
+        <Value>ID3514001</Value>
+        <Sizing>FitProportional</Sizing>
+        <Left>4.97444in</Left>
+        <Height>1.28125in</Height>
+        <Width>1.52556in</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <GaugePanel Name="GaugePanel1">
+        <RadialGauges>
+          <RadialGauge Name="RadialGauge1">
+            <GaugeScales>
+              <RadialScale Name="RadialScale1">
+                <GaugePointers>
+                  <RadialPointer Name="RadialPointer1">
+                    <Type>Bar</Type>
+                    <PointerCap>
+                      <Style>
+                        <BackgroundColor>White</BackgroundColor>
+                        <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                        <BackgroundGradientEndColor>DimGray</BackgroundGradientEndColor>
+                        <BackgroundHatchType>None</BackgroundHatchType>
+                      </Style>
+                      <CapImage>
+                        <OffsetX>0pt</OffsetX>
+                        <OffsetY>0pt</OffsetY>
+                        <Source>External</Source>
+                        <Value />
+                      </CapImage>
+                      <OnTop>true</OnTop>
+                      <CapStyle>RoundedWithWideIndentation</CapStyle>
+                      <Width>33</Width>
+                    </PointerCap>
+                    <NeedleStyle>Tapered</NeedleStyle>
+                    <Style>
+                      <Border>
+                        <Style>None</Style>
+                      </Border>
+                      <BackgroundColor>#01b8aa</BackgroundColor>
+                      <BackgroundGradientType>None</BackgroundGradientType>
+                      <BackgroundGradientEndColor>Orange</BackgroundGradientEndColor>
+                      <BackgroundHatchType>None</BackgroundHatchType>
+                      <ShadowOffset>0pt</ShadowOffset>
+                    </Style>
+                    <GaugeInputValue>
+                      <Value>=Sum(Fields!Amount.Value)</Value>
+                      <Multiplier>1</Multiplier>
+                    </GaugeInputValue>
+                    <PointerImage>
+                      <OffsetX>0pt</OffsetX>
+                      <OffsetY>0pt</OffsetY>
+                      <Source>External</Source>
+                      <Value />
+                    </PointerImage>
+                    <MarkerLength>25</MarkerLength>
+                    <MarkerStyle>Wedge</MarkerStyle>
+                    <Placement>Cross</Placement>
+                    <Width>30</Width>
+                  </RadialPointer>
+                </GaugePointers>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <BackgroundColor>LightGrey</BackgroundColor>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                  <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+                  <BackgroundHatchType>None</BackgroundHatchType>
+                  <ShadowOffset>0pt</ShadowOffset>
+                </Style>
+                <Interval>50</Interval>
+                <IntervalOffset>NaN</IntervalOffset>
+                <MaximumValue>
+                  <Value>100</Value>
+                  <Multiplier>1</Multiplier>
+                </MaximumValue>
+                <MinimumValue>
+                  <Value>0</Value>
+                  <Multiplier>1</Multiplier>
+                </MinimumValue>
+                <GaugeMajorTickMarks>
+                  <Interval>NaN</Interval>
+                  <IntervalOffset>NaN</IntervalOffset>
+                  <Style>
+                    <Border>
+                      <Color>DimGray</Color>
+                      <Style>Solid</Style>
+                    </Border>
+                    <BackgroundColor>WhiteSmoke</BackgroundColor>
+                  </Style>
+                  <Placement>Cross</Placement>
+                  <TickMarkImage>
+                    <Source>External</Source>
+                    <Value />
+                  </TickMarkImage>
+                  <Length>14</Length>
+                  <Width>8</Width>
+                  <Shape>Trapezoid</Shape>
+                  <Hidden>true</Hidden>
+                </GaugeMajorTickMarks>
+                <GaugeMinorTickMarks>
+                  <Interval>NaN</Interval>
+                  <IntervalOffset>NaN</IntervalOffset>
+                  <Style>
+                    <Border>
+                      <Color>DimGray</Color>
+                      <Style>Solid</Style>
+                    </Border>
+                    <BackgroundColor>WhiteSmoke</BackgroundColor>
+                  </Style>
+                  <Placement>Cross</Placement>
+                  <TickMarkImage>
+                    <Source>External</Source>
+                    <Value />
+                  </TickMarkImage>
+                  <Length>8</Length>
+                  <Width>3</Width>
+                  <Hidden>true</Hidden>
+                </GaugeMinorTickMarks>
+                <MaximumPin>
+                  <PinLabel>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                    <DistanceFromScale>0</DistanceFromScale>
+                  </PinLabel>
+                  <Style>
+                    <Border>
+                      <Color>DimGray</Color>
+                      <Style>Solid</Style>
+                    </Border>
+                    <BackgroundColor>WhiteSmoke</BackgroundColor>
+                  </Style>
+                  <Placement>Cross</Placement>
+                  <TickMarkImage>
+                    <Source>External</Source>
+                    <Value />
+                  </TickMarkImage>
+                  <Length>6</Length>
+                  <Width>6</Width>
+                  <Shape>Circle</Shape>
+                </MaximumPin>
+                <MinimumPin>
+                  <PinLabel>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                    <DistanceFromScale>0</DistanceFromScale>
+                  </PinLabel>
+                  <Style>
+                    <Border>
+                      <Color>DimGray</Color>
+                      <Style>Solid</Style>
+                    </Border>
+                    <BackgroundColor>WhiteSmoke</BackgroundColor>
+                  </Style>
+                  <Placement>Cross</Placement>
+                  <TickMarkImage>
+                    <Source>External</Source>
+                    <Value />
+                  </TickMarkImage>
+                  <Length>6</Length>
+                  <Width>6</Width>
+                  <Shape>Circle</Shape>
+                </MinimumPin>
+                <ScaleLabels>
+                  <Style>
+                    <FontSize>14pt</FontSize>
+                  </Style>
+                  <Interval>NaN</Interval>
+                  <IntervalOffset>NaN</IntervalOffset>
+                  <DistanceFromScale>0</DistanceFromScale>
+                  <Placement>Outside</Placement>
+                  <ShowEndLabels>true</ShowEndLabels>
+                  <UseFontPercent>true</UseFontPercent>
+                </ScaleLabels>
+                <Width>30</Width>
+              </RadialScale>
+            </GaugeScales>
+            <BackFrame>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BackgroundColor>WhiteSmoke</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <BackgroundGradientEndColor>Gainsboro</BackgroundGradientEndColor>
+                <BackgroundHatchType>None</BackgroundHatchType>
+                <ShadowOffset>0pt</ShadowOffset>
+              </Style>
+              <FrameShape>CustomCircular2</FrameShape>
+              <FrameBackground>
+                <Style>
+                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                  <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                  <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                  <BackgroundHatchType>None</BackgroundHatchType>
+                </Style>
+              </FrameBackground>
+              <FrameImage>
+                <Source>External</Source>
+                <Value />
+              </FrameImage>
+            </BackFrame>
+            <ClipContent>true</ClipContent>
+            <TopImage>
+              <Source>External</Source>
+              <Value />
+            </TopImage>
+            <AspectRatio>1</AspectRatio>
+            <Height>100</Height>
+            <Width>100</Width>
+          </RadialGauge>
+        </RadialGauges>
+        <GaugeLabels>
+          <GaugeLabel Name="GaugeLabel1">
+            <Text>35</Text>
+            <TextShadowOffset>0pt</TextShadowOffset>
+            <UseFontPercent>true</UseFontPercent>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BackgroundColor>#00ffffff</BackgroundColor>
+              <BackgroundGradientType>None</BackgroundGradientType>
+              <BackgroundGradientEndColor>#00ffffff</BackgroundGradientEndColor>
+              <FontFamily>Segoe UI Light</FontFamily>
+              <FontSize>14pt</FontSize>
+              <TextAlign>Center</TextAlign>
+              <VerticalAlign>Middle</VerticalAlign>
+              <Color>#333333</Color>
+              <ShadowOffset>0pt</ShadowOffset>
+            </Style>
+            <Top>30</Top>
+            <Left>30</Left>
+            <Height>40</Height>
+            <Width>40</Width>
+            <ParentItem>RadialGauges.RadialGauge1</ParentItem>
+          </GaugeLabel>
+        </GaugeLabels>
+        <AutoLayout>true</AutoLayout>
+        <BackFrame>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BackgroundColor>Gainsboro</BackgroundColor>
+            <BackgroundGradientType>None</BackgroundGradientType>
+            <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+            <BackgroundHatchType>None</BackgroundHatchType>
+            <ShadowOffset>0pt</ShadowOffset>
+          </Style>
+          <FrameBackground>
+            <Style>
+              <BackgroundColor>Silver</BackgroundColor>
+              <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+              <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+              <BackgroundHatchType>None</BackgroundHatchType>
+            </Style>
+          </FrameBackground>
+          <FrameImage>
+            <Source>External</Source>
+            <Value />
+          </FrameImage>
+        </BackFrame>
+        <TopImage>
+          <Source>External</Source>
+          <Value />
+        </TopImage>
+        <DataSetName>Donations</DataSetName>
+        <Top>2.23833in</Top>
+        <Left>1.41542in</Left>
+        <Height>2.71875in</Height>
+        <Width>3.64583in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>White</BackgroundColor>
+        </Style>
+      </GaugePanel>
+      <Textbox Name="Textbox8">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Reach Your Donaton Goal of R1000</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox8</rd:DefaultName>
+        <Top>1.96056in</Top>
+        <Left>1.68625in</Left>
+        <Height>0.25in</Height>
+        <Width>3.21875in</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>5.15426in</Height>
+    <Style />
+  </Body>
+  <Width>6.5in</Width>
+  <Page>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DonationDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>faf71d62-3a04-41f3-b627-27664689bea7</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Donations">
+      <Query>
+        <DataSourceName>DonationDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="DonationID">
+          <DataField>DonationID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Date">
+          <DataField>Date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="LocationID">
+          <DataField>LocationID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DonationTypeID">
+          <DataField>DonationTypeID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>DonationDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\DonationDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>Donation</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>DonationTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <EmbeddedImages>
+    <EmbeddedImage Name="ID3514001">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>f4ee2585-fa43-4aab-9a8e-ec8b7f6488e0</rd:ReportID>
+</Report>

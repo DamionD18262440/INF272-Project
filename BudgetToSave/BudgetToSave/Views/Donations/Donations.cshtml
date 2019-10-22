@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BudgetToSave.Models.Donation>
+
+@{
+    ViewBag.Title = "Donations";
+    Layout = "~/Views/Shared/StandardLayout.cshtml";
+}
+
+<a href="~/Controllers/MonthlySpendingsController.cs">~/Controllers/MonthlySpendingsController.cs</a>
+@Html.ActionLink("Export PDF", "Reports2", new { ReportType = "PDF" }) |
+<section style="z-index:99;position:sticky">
+    <div class="tbl-header" style="z-index:99;position:sticky">
+        <table class="table" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DonationType.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location.Description)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DonationType.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location.Description)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.DonationID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.DonationID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.DonationID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+    </section>
