@@ -118,6 +118,18 @@
           <ScalarProperty Name="UserID" ColumnName="UserID" />
         </MappingFragment>
       </EntityTypeMapping>
+      <EntityTypeMapping TypeName="tr4yModel.User">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="tr4yModel.Store.Insert_Userss">
+            <ScalarProperty Name="UserTypeID" ParameterName="UserTypeID" />
+            <ScalarProperty Name="UserSurname" ParameterName="UserSurname" />
+            <ScalarProperty Name="UserName" ParameterName="UserName" />
+            <ScalarProperty Name="UserPassword" ParameterName="UserPassword" />
+            <ScalarProperty Name="UserUseName" ParameterName="UserUseName" />
+            <ResultBinding Name="UserID" ColumnName="UserID" />
+          </InsertFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserTypes">
       <EntityTypeMapping TypeName="tr4yModel.UserType">
@@ -143,5 +155,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Insert_Userss" FunctionName="tr4yModel.Store.Insert_Userss" />
+    <FunctionImportMapping FunctionImportName="Validate_User" FunctionName="tr4yModel.Store.Validate_User" />
+    <FunctionImportMapping FunctionImportName="ValidateUser" FunctionName="tr4yModel.Store.Validate_User" />
   </EntityContainerMapping>
 </Mapping>

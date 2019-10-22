@@ -284,6 +284,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="Insert_Userss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserUseName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserPassword" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserSurname" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Validate_User" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserUseName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserPassword" Type="nvarchar" Mode="In" />
+  </Function>
   <EntityContainer Name="tr4yModelStoreContainer">
     <EntitySet Name="BudgetLimit" EntityType="Self.BudgetLimit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />

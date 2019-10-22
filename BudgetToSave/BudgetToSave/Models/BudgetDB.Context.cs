@@ -12,6 +12,8 @@ namespace BudgetToSave.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BudgetDBEntities : DbContext
     {
@@ -39,5 +41,56 @@ namespace BudgetToSave.Models
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<DonationType> DonationTypes { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
+    
+        public virtual ObjectResult<Nullable<int>> Insert_Userss(string userUseName, string userPassword, string userName, string userSurname, Nullable<int> userTypeID)
+        {
+            var userUseNameParameter = userUseName != null ?
+                new ObjectParameter("UserUseName", userUseName) :
+                new ObjectParameter("UserUseName", typeof(string));
+    
+            var userPasswordParameter = userPassword != null ?
+                new ObjectParameter("UserPassword", userPassword) :
+                new ObjectParameter("UserPassword", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var userSurnameParameter = userSurname != null ?
+                new ObjectParameter("UserSurname", userSurname) :
+                new ObjectParameter("UserSurname", typeof(string));
+    
+            var userTypeIDParameter = userTypeID.HasValue ?
+                new ObjectParameter("UserTypeID", userTypeID) :
+                new ObjectParameter("UserTypeID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Insert_Userss", userUseNameParameter, userPasswordParameter, userNameParameter, userSurnameParameter, userTypeIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Validate_User(string userUseName, string userPassword)
+        {
+            var userUseNameParameter = userUseName != null ?
+                new ObjectParameter("UserUseName", userUseName) :
+                new ObjectParameter("UserUseName", typeof(string));
+    
+            var userPasswordParameter = userPassword != null ?
+                new ObjectParameter("UserPassword", userPassword) :
+                new ObjectParameter("UserPassword", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Validate_User", userUseNameParameter, userPasswordParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ValidateUser(string userUseName, string userPassword)
+        {
+            var userUseNameParameter = userUseName != null ?
+                new ObjectParameter("UserUseName", userUseName) :
+                new ObjectParameter("UserUseName", typeof(string));
+    
+            var userPasswordParameter = userPassword != null ?
+                new ObjectParameter("UserPassword", userPassword) :
+                new ObjectParameter("UserPassword", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ValidateUser", userUseNameParameter, userPasswordParameter);
+        }
     }
 }

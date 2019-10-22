@@ -197,6 +197,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BudgetLimitsController.cs" />
+    <Compile Include="Controllers\CreateUsersController.cs" />
     <Compile Include="Controllers\DonationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncomesController.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Controllers\InvestmentsController.cs" />
     <Compile Include="Controllers\InvestmentTypesController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\MonthlySpendingsController.cs" />
     <Compile Include="Controllers\NetWorthsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -382,6 +384,9 @@
     <Content Include="Views\Locations\Delete.cshtml" />
     <Content Include="Views\Locations\Edit.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\CreateUsers\Index.cshtml" />
+    <Content Include="Views\Logins\Index.cshtml" />
+    <Content Include="Views\Logins\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

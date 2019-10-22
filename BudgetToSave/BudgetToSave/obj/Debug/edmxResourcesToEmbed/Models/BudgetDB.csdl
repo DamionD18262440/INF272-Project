@@ -221,6 +221,21 @@
       <End Role="Location" EntitySet="Locations" />
       <End Role="Donation" EntitySet="Donations" />
     </AssociationSet>
+    <FunctionImport Name="Insert_Userss" ReturnType="Collection(Int32)">
+      <Parameter Name="UserUseName" Mode="In" Type="String" />
+      <Parameter Name="UserPassword" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="UserSurname" Mode="In" Type="String" />
+      <Parameter Name="UserTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Validate_User" ReturnType="Collection(Int32)">
+      <Parameter Name="UserUseName" Mode="In" Type="String" />
+      <Parameter Name="UserPassword" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ValidateUser" ReturnType="Collection(Int32)">
+      <Parameter Name="UserUseName" Mode="In" Type="String" />
+      <Parameter Name="UserPassword" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="User">
     <Key>
