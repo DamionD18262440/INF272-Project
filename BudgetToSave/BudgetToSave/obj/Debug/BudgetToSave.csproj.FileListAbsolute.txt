@@ -348,7 +348,6 @@ C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\zh-C
 C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\RdlCompile.cache
 C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\RdlCompile.compiled
-C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\BudgetToSave.csprojAssemblyReference.cache
 C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\SqlServerTypes\x64\msvcr120.dll
 C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\SqlServerTypes\x86\msvcr120.dll
@@ -451,3 +450,4 @@ C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\pt
 C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\User\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\obj\Debug\BudgetToSave.csprojAssemblyReference.cache
