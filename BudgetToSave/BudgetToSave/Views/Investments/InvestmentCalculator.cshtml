@@ -10,10 +10,10 @@
         <h2>Investment Calculator</h2>
         <div>
             <label>Amount(R):</label>
-            <input name="amount" id="Text1" type="text" required />
+            <input name="amount" id="Text1" type="number" required />
             <br />
             <label>Interest Rate:</label>
-            <input name="interestrate" id="Text1" type="text" required />
+            <input name="interestrate" id="Text1" type="number" required />
             <br />
             <label>Interest Type:</label>
             <select id="Select1" name="interesttype">
@@ -36,7 +36,7 @@
                 <option value="3">Money Market Fund</option>
             </select><br />
             <label>Number Of Years:</label>
-            <input id="Text1" type="text" name="numofyears" required />
+            <input id="Text1" type="number" name="numofyears" required />
             <br />
             <input id="Button1" type="submit" value="Calculate" /> <input id="Button1" type="button" value="Cancel" onclick="window.location.href = '@Url.Action("Investment", "Investments")'" />
             <br />
