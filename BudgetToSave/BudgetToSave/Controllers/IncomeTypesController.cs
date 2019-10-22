@@ -94,10 +94,19 @@ namespace BudgetToSave.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            IncomeType incomeType = db.IncomeTypes.Find(id);
-            db.IncomeTypes.Remove(incomeType);
-            db.SaveChanges();
-            return RedirectToAction("IncomeType");
+            try
+            {
+                IncomeType incomeType = db.IncomeTypes.Find(id);
+                db.IncomeTypes.Remove(incomeType);
+                db.SaveChanges();
+            }
+            catch(Exception)
+            {
+                
+                ViewBag.mess = "Can not delete, in use by Income";
+            }
+           
+            return View();
         }
 
         protected override void Dispose(bool disposing)

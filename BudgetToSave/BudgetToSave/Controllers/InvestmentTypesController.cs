@@ -93,9 +93,19 @@ namespace BudgetToSave.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            InvestmentType investmentType = db.InvestmentTypes.Find(id);
-            db.InvestmentTypes.Remove(investmentType);
-            db.SaveChanges();
+            try
+            {
+
+
+                InvestmentType investmentType = db.InvestmentTypes.Find(id);
+                db.InvestmentTypes.Remove(investmentType);
+                db.SaveChanges();
+            }
+            catch(Exception)
+            {
+                ViewBag.mes = "Can not delete, in use by Investment";
+                return View();
+            }
             return RedirectToAction("InvestmentType");
         }
 

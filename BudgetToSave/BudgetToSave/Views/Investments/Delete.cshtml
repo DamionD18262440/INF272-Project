@@ -13,79 +13,38 @@
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Amount):
+                Amount : @Html.DisplayFor(model => model.Amount)
             </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Amount)
-            </dd>
-
             <dt>
-                @Html.DisplayNameFor(model => model.NumOfYears):
+                Number Of Years : @Html.DisplayFor(model => model.NumOfYears)
             </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.NumOfYears)
-            </dd>
-
             <dt>
-                @Html.DisplayNameFor(model => model.TotalInvest):
+                Total Amount : @Html.DisplayFor(model => model.TotalInvest)
             </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.TotalInvest)
-            </dd>
-
             <dt>
-                @Html.DisplayNameFor(model => model.InterestRate):
+                Interest Rate : @Html.DisplayFor(model => model.InterestRate)
             </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.InterestRate)
-            </dd>
-
             <dt>
-                @Html.DisplayNameFor(model => model.Date):
+                Date : @Html.DisplayFor(model => model.Date)
             </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Date)
-            </dd>
-
             <dt>
-                @Html.DisplayNameFor(model => model.InterestPeriod.Description):
+                Interest Period : @Html.DisplayFor(model => model.InterestPeriod.Description)
             </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.InterestPeriod.Description)
-            </dd>
-
             <dt>
-                @Html.DisplayNameFor(model => model.InterestType.Description):
+                Interest Type : @Html.DisplayFor(model => model.InterestType.Description)
             </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.InterestType.Description)
-            </dd>
-
             <dt>
-                @Html.DisplayNameFor(model => model.InvestmentType.Description):
+                Investment Type : @Html.DisplayFor(model => model.InvestmentType.Description)
             </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.InvestmentType.Description)
-            </dd>
-
         </dl>
 
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Investment")
-            </div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> | <input id="Button1" type="button" value="Back To List" onclick="window.location.href = '@Url.Action("Investment", "Investments")'" />
+    </div>
         }
     </div>
 </section>

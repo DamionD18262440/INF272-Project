@@ -18,7 +18,7 @@
             <div class="form-group">
                 <h3>Date</h3>
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control",required = "required" } })
                     @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -26,7 +26,7 @@
             <div class="form-group">
                 <h3>Amount</h3>
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control",required = "required" } })
                     @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -34,7 +34,7 @@
             <div class="form-group">
                 <h3>Income Type</h3>
                 <div class="col-md-10">
-                    @Html.DropDownList("IncomeTypeID", null, htmlAttributes: new { @class = "form-control" }) <input id="Button1" type="button" value="Edit" onclick="window.location.href = '@Url.Action("IncomeType", "IncomeTypes")'" />
+                    @Html.DropDownList("IncomeTypeID", null, htmlAttributes: new { @class = "form-control",required = "required" }) <input id="Button1" type="button" value="Edit" onclick="window.location.href = '@Url.Action("IncomeType", "IncomeTypes")'" />
                     @Html.ValidationMessageFor(model => model.IncomeTypeID, "", new { @class = "text-danger" })
                 </div>
             </div>
