@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FoodLimit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FoodLimit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.FoodLimit, new { htmlAttributes = new { @class = "form-control",required="required" } })
                 @Html.ValidationMessageFor(model => model.FoodLimit, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ClothesLimit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ClothesLimit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ClothesLimit, new { htmlAttributes = new { @class = "form-control",required="required" } })
                 @Html.ValidationMessageFor(model => model.ClothesLimit, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AlcoholLimit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AlcoholLimit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.AlcoholLimit, new { htmlAttributes = new { @class = "form-control",required="required" } })
                 @Html.ValidationMessageFor(model => model.AlcoholLimit, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,20 +44,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OtherLimit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OtherLimit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.OtherLimit, new { htmlAttributes = new { @class = "form-control",required="required" } })
                 @Html.ValidationMessageFor(model => model.OtherLimit, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" /> | <button type="submit" value="Back to List" onclick="window.location.href = 'Index'">Confirm</button>
+
             </div>
         </div>
     </div>
 </section>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
