@@ -11,14 +11,20 @@ namespace BudgetToSave.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         public int UserID { get; set; }
+        [Required(ErrorMessage = "Required")]
         public string UserName { get; set; }
+        [Required(ErrorMessage = "Required")]
         public string UserSurname { get; set; }
+        [Required(ErrorMessage = "Required")]
         public string UserUseName { get; set; }
+        [Required(ErrorMessage = "Required")]
         public string UserPassword { get; set; }
+        [Required(ErrorMessage = "Required")]
         public int UserTypeID { get; set; }
         public Nullable<int> BudgetLimitID { get; set; }
         public Nullable<int> MonthlySpendingID { get; set; }

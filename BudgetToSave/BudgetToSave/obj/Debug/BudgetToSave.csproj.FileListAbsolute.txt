@@ -260,3 +260,10 @@ C:\Users\Jason\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\Cry
 C:\Users\Jason\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\CrystalDecisions.Web.dll
 C:\Users\Jason\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\log4net.dll
 C:\Users\Jason\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\log4net.xml
+C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\CrystalDecisions.ReportSource.dll
+C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\CrystalDecisions.Shared.dll
+C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\CrystalDecisions.Web.dll
+C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\log4net.dll
+C:\Users\Damion\Documents\GitHub\INF272-Project\BudgetToSave\BudgetToSave\bin\log4net.xml
