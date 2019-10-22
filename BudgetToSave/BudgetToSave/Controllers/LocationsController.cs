@@ -109,9 +109,18 @@ namespace BudgetToSave.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Location location = db.Locations.Find(id);
-            db.Locations.Remove(location);
-            db.SaveChanges();
+            try
+            {
+                Location location = db.Locations.Find(id);
+                db.Locations.Remove(location);
+                db.SaveChanges();
+            }
+            catch(Exception)
+            {
+                ViewBag.not = "Can not delete, in use by donations";
+                return View();
+            }
+            
             return RedirectToAction("Index");
         }
 

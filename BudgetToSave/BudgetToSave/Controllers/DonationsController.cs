@@ -54,8 +54,16 @@ namespace BudgetToSave.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Donations.Add(donation);
-                db.SaveChanges();
+                try
+                {
+                    db.Donations.Add(donation);
+                    db.SaveChanges();
+                }
+               catch(Exception err)
+                {
+                    ViewBag.mefd = "Error" + err;
+                    return View();
+                }
                 return RedirectToAction("Index");
             }
 

@@ -214,6 +214,7 @@
     <Compile Include="Controllers\BudgetLimitsController.cs" />
     <Compile Include="Controllers\CreateUsersController.cs" />
     <Compile Include="Controllers\DonationsController.cs" />
+    <Compile Include="Controllers\DonationTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncomesController.cs" />
     <Compile Include="Controllers\IncomeTypesController.cs" />
@@ -454,6 +455,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DonationTypes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
